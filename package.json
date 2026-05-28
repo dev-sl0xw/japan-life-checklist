@@ -1,0 +1,21 @@
+{
+  "name": "japan-life-checklist",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "일본 거주 한국인(외국인)을 위한 이사·이직·필수 행정 자가 검토 체크리스트. Vanilla HTML + Tailwind CDN + Vanilla JS. localStorage 영속. GitHub Pages 호스팅.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-items.mjs",
+    "serve": "python3 -m http.server 8000"
+  },
+  "license": "MIT",
+  "author": "dev-sl0xw",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-sl0xw/japan-life-checklist"
+  },
+  "homepage": "https://dev-sl0xw.github.io/japan-life-checklist/"
+}

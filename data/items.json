@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "app_min_schema_version": 1,
+  "data_version": "2026-05-29",
+  "content_review_cadence": "quarterly",
+  "profile_flags": [
+    { "id": "moving",                            "label_ko": "이사 진행 중",                "label_ja": "引っ越し中" },
+    { "id": "jobchange",                         "label_ko": "이직 진행 중",                "label_ja": "転職中" },
+    { "id": "has_job_gap",                       "label_ko": "퇴직~입사 사이 공백 있음",    "label_ja": "退職と入社の間に空白あり" },
+    { "id": "has_company_dc_or_ideco",           "label_ko": "企業型DC 또는 iDeCo 가입",    "label_ja": "企業型DC・iDeCo加入" },
+    { "id": "has_side_income_or_freelance",      "label_ko": "부업/프리랜서 소득 있음",     "label_ja": "副業・フリーランス収入あり" },
+    { "id": "spouse_dependent_or_dependent_visa","label_ko": "배우자 부양 또는 가족체류비자","label_ja": "配偶者扶養または家族滞在ビザ" },
+    { "id": "leaving_japan_or_overseas_move",    "label_ko": "영구 귀국/제3국 이동 가능성", "label_ja": "永久帰国・第三国移動の可能性" },
+    { "id": "has_drivers_license",               "label_ko": "운전면허 보유",               "label_ja": "運転免許所持" },
+    { "id": "has_car",                           "label_ko": "자동차 보유",                 "label_ja": "自動車所持" },
+    { "id": "has_private_health_ins",            "label_ko": "민간 의료보험 가입",          "label_ja": "民間医療保険加入" },
+    { "id": "has_life_ins",                      "label_ko": "생명보험 가입",               "label_ja": "生命保険加入" },
+    { "id": "has_kids",                          "label_ko": "자녀 동반",                   "label_ja": "子供同伴" },
+    { "id": "has_spouse",                        "label_ko": "배우자 동반",                 "label_ja": "配偶者同伴" },
+    { "id": "visa_change_needed",                "label_ko": "이직으로 비자/소속기관 변경", "label_ja": "在留資格・所属機関の変更" }
+  ],
+  "categories": [
+    {
+      "id": "cat_moving",
+      "icon": "📦",
+      "label_ko": "이사",
+      "label_ja": "引っ越し",
+      "visible_when": { "any_of": ["moving"] },
+      "subcategories": [
+        {
+          "id": "cat_moving_decide",
+          "label_ko": "결정·계약",
+          "label_ja": "決定・契約",
+          "items": [
+            {
+              "id": "mv_decide_compare_001",
+              "title_ko": "새 집 후보 3곳 이상 비교 (스캐폴딩 더미)",
+              "title_ja": "新居候補3件以上比較",
+              "description_ko": "賃料·間取り·駅徒歩·礼金·更新料 비교표 작성",
+              "timeline": "D-60",
+              "timeline_offset_days": -60,
+              "tags": ["계약"],
+              "risk_level": "convenience",
+              "visible_when": { "any_of": ["moving"] },
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_jobchange",
+      "icon": "💼",
+      "label_ko": "이직",
+      "label_ja": "転職",
+      "visible_when": { "any_of": ["jobchange"] },
+      "subcategories": []
+    },
+    {
+      "id": "cat_admin",
+      "icon": "📋",
+      "label_ko": "직결 외국인/한국인 필수 행정",
+      "label_ja": "在住外国人 必須行政",
+      "visible_when": {},
+      "subcategories": []
+    }
+  ]
+}
