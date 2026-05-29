@@ -17,16 +17,42 @@ function el(tag, opts = {}) {
   return node;
 }
 
-function timelineLabel(item) {
+function addDays(dateStr, n) {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + n);
+  return d;
+}
+function ymd(d) { return `${d.getUTCMonth() + 1}/${d.getUTCDate()}`; }
+function dayDiff(a, b) { return Math.round((a.getTime() - b.getTime()) / 86400000); }
+
+// 기준일(anchor) 미설정 → 상대 라벨. 설정 → 실제 날짜 + 카운트다운 + 근접 색상.
+function timelineChip(item, cat, anchors, today) {
   if (item.timeline == null) return null;
   const off = item.timeline_offset_days;
-  let suffix = '';
-  if (typeof off === 'number') {
-    if (off === 0) suffix = 'D-Day';
-    else if (off < 0) suffix = `${Math.abs(off)}일 전`;
-    else suffix = `${off}일 후`;
+  const anchorType = cat?.anchor;          // 'move' | 'job'
+  const anchorDate = anchorType && anchors ? anchors[anchorType] : null;
+
+  // 정적 라벨 (기준일 없음)
+  const staticSuffix = (typeof off === 'number')
+    ? (off === 0 ? 'D-Day' : off < 0 ? `${Math.abs(off)}일 전` : `${off}일 후`) : '';
+  const staticText = staticSuffix ? `🕒 ${item.timeline} · ${staticSuffix}` : `🕒 ${item.timeline}`;
+
+  if (!anchorDate || typeof off !== 'number') {
+    return { text: staticText, urgency: '', aria: `시점: ${item.timeline}` };
   }
-  return suffix ? `${item.timeline} · ${suffix}` : item.timeline;
+
+  // 실제 날짜 = 기준일 + offset, 남은 일수 = 그날 - 오늘
+  const itemDate = addDays(anchorDate, off);
+  const du = dayDiff(itemDate, new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())));
+  const md = ymd(itemDate);
+  let count, urgency;
+  if (du < 0)       { count = `${-du}일 지남`; urgency = 'jlc-u-overdue'; }
+  else if (du === 0){ count = '오늘'; urgency = 'jlc-u-now'; }
+  else if (du <= 5) { count = `${du}일 남음`; urgency = 'jlc-u-now'; }
+  else if (du <= 14){ count = `${du}일 남음`; urgency = 'jlc-u-soon'; }
+  else if (du <= 30){ count = `${du}일 남음`; urgency = 'jlc-u-near'; }
+  else              { count = `${du}일 남음`; urgency = 'jlc-u-far'; }
+  return { text: `📅 ${md} · ${count}`, urgency, aria: `예정일 ${md}, ${count}` };
 }
 
 function daysSince(dateStr, today) {
@@ -56,7 +82,7 @@ export function renderProfile(panelEl, flags, profile, onToggle) {
 // ── 항목 카드 ─────────────────────────────────────────────
 function renderItem(entry, ctx, { showDomain = false } = {}) {
   const { item, cat } = entry;
-  const { checked, notes, today, onCheck, onNote } = ctx;
+  const { checked, notes, today, anchors, region, regionResources, regionLabel, onCheck, onNote } = ctx;
   const card = el('li', { class: 'jlc-card', attrs: { 'data-item-id': item.id } });
 
   const top = el('label', { class: 'jlc-card-top' });
@@ -80,8 +106,10 @@ function renderItem(entry, ctx, { showDomain = false } = {}) {
     class: `jlc-chip ${rm.cls}`, text: `${rm.mark} ${rm.ko}`,
     attrs: { 'aria-label': `위험도: ${rm.ko}` },
   }));
-  const tl = timelineLabel(item);
-  if (tl) meta.appendChild(el('span', { class: 'jlc-chip jlc-chip-timeline', text: `🕒 ${tl}`, attrs: { 'aria-label': `시점: ${tl}` } }));
+  const tl = timelineChip(item, cat, anchors, today);
+  if (tl) meta.appendChild(el('span', {
+    class: `jlc-chip jlc-chip-timeline ${tl.urgency}`.trim(), text: tl.text, attrs: { 'aria-label': tl.aria },
+  }));
   if (item.needs_verification === true) meta.appendChild(el('span', { class: 'jlc-chip jlc-chip-verify', text: '⚠ 확인 필요' }));
   card.appendChild(meta);
 
@@ -104,6 +132,29 @@ function renderItem(entry, ctx, { showDomain = false } = {}) {
     if (age != null) src.appendChild(el('span', { class: 'jlc-src-age', text: `ⓘ ${age}일 전 확인` }));
     card.appendChild(src);
   }
+
+  // 바로가기 링크 = 항목 자체 links + 지역(region_key) 해결 링크
+  const actionLinks = [];
+  for (const ln of item.links || []) if (/^https:\/\//.test(ln.url || '')) actionLinks.push(ln);
+  let regionFallbackNote = null;
+  if (item.region_key && regionResources && regionResources[item.region_key]) {
+    const byRegion = regionResources[item.region_key];
+    const resolved = byRegion[region] || byRegion._default || [];
+    for (const ln of resolved) if (/^https:\/\//.test(ln.url || '')) actionLinks.push(ln);
+    if (resolved.length === 0) regionFallbackNote = `📍 ${regionLabel || region}: 거주 지자체 공식 사이트에서 확인하세요`;
+  }
+  if (actionLinks.length > 0) {
+    const row = el('div', { class: 'jlc-card-actions' });
+    row.appendChild(el('span', { class: 'jlc-action-label', text: '바로가기:' }));
+    for (const ln of actionLinks) {
+      row.appendChild(el('a', {
+        class: 'jlc-action-link', text: ln.label_ko || ln.publisher || ln.url,
+        attrs: { href: ln.url, target: '_blank', rel: 'noopener noreferrer' },
+      }));
+    }
+    card.appendChild(row);
+  }
+  if (regionFallbackNote) card.appendChild(el('p', { class: 'jlc-region-note', text: regionFallbackNote }));
 
   // 메모 (사생활 — 인쇄 숨김)
   const details = el('details', { class: 'jlc-card-notes' });
@@ -187,14 +238,14 @@ function renderTimeline(rootEl, entries, ctx) {
 
 // ── 진입점 ────────────────────────────────────────────────
 // entries: 필터 적용된 [{cat, sub, item}]. mode: 'domain'|'timeline'.
-export function renderChecklist(rootEl, { entries, mode, checked, notes, today, onCheck, onNote, emptyReason }) {
+export function renderChecklist(rootEl, { entries, mode, checked, notes, today, anchors, region, regionResources, regionLabel, onCheck, onNote, emptyReason }) {
   if (!rootEl) return;
   rootEl.textContent = '';
   if (!entries || entries.length === 0) {
     rootEl.appendChild(el('p', { class: 'jlc-empty', text: emptyReason || '표시할 항목이 없습니다.' }));
     return;
   }
-  const ctx = { checked, notes, today, onCheck, onNote };
+  const ctx = { checked, notes, today, anchors, region, regionResources, regionLabel, onCheck, onNote };
   if (mode === 'timeline') renderTimeline(rootEl, entries, ctx);
   else renderDomain(rootEl, entries, ctx);
 }

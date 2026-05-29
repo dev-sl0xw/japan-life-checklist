@@ -189,6 +189,30 @@ a { color: var(--jlc-accent); }
 }
 .jlc-src-age { color: var(--jlc-muted); font-size: 0.78rem; }
 
+/* ── 기준일·지역 컨트롤 ─────────────────────────────── */
+.jlc-date {
+  min-height: 44px; padding: 0.3rem 0.55rem; border: 1px solid var(--jlc-border);
+  border-radius: 0.5rem; background: var(--jlc-bg); color: var(--jlc-fg); font: inherit; font-size: 0.85rem;
+}
+.jlc-toolbar-hint { font-size: 0.74rem; color: var(--jlc-muted); }
+
+/* ── D-Day 근접 강조 (기준일 입력 시) ──────────────── */
+.jlc-chip-timeline.jlc-u-overdue { background: #7f1d1d; color: #fff; border-color: #7f1d1d; }
+.jlc-chip-timeline.jlc-u-now     { background: #dc2626; color: #fff; border-color: #dc2626; font-weight: 700; }
+.jlc-chip-timeline.jlc-u-soon    { background: #f97316; color: #fff; border-color: #f97316; }
+.jlc-chip-timeline.jlc-u-near    { background: #fde047; color: #713f12; border-color: #facc15; }
+.jlc-chip-timeline.jlc-u-far     { background: transparent; color: var(--jlc-muted); border-color: var(--jlc-border); }
+
+/* ── 바로가기 / 지역 안내 ──────────────────────────── */
+.jlc-card-actions { margin: 0.4rem 0 0; padding-left: 1.85rem; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; }
+.jlc-action-label { color: var(--jlc-muted); }
+.jlc-action-link {
+  text-decoration: none; border: 1px solid var(--jlc-accent); border-radius: 0.4rem;
+  padding: 0.15rem 0.5rem; color: var(--jlc-accent);
+}
+.jlc-action-link:hover { background: color-mix(in srgb, var(--jlc-accent) 12%, transparent); }
+.jlc-region-note { margin: 0.35rem 0 0; padding-left: 1.85rem; font-size: 0.8rem; color: var(--jlc-muted); }
+
 /* 인쇄 스타일 — 토글·필터·메모·헤더액션 숨김 (메모는 사생활) */
 @media print {
   #profile-panel,

@@ -1,31 +1,356 @@
 {
   "schema_version": 1,
   "app_min_schema_version": 1,
-  "data_version": "2026-05-29",
+  "data_version": "2026-05-30",
   "content_review_cadence": "quarterly",
   "profile_flags": [
-    { "id": "moving",                            "label_ko": "이사 진행 중",                "label_ja": "引っ越し中" },
-    { "id": "jobchange",                         "label_ko": "이직 진행 중",                "label_ja": "転職中" },
-    { "id": "has_job_gap",                       "label_ko": "퇴직~입사 사이 공백 있음",    "label_ja": "退職と入社の間に空白あり" },
-    { "id": "has_company_dc_or_ideco",           "label_ko": "기업형 DC 또는 iDeCo 가입",    "label_ja": "企業型DC・iDeCo加入" },
-    { "id": "has_side_income_or_freelance",      "label_ko": "부업/프리랜서 소득 있음",     "label_ja": "副業・フリーランス収入あり" },
-    { "id": "spouse_dependent_or_dependent_visa","label_ko": "배우자 부양 또는 가족체류비자","label_ja": "配偶者扶養または家族滞在ビザ" },
-    { "id": "leaving_japan_or_overseas_move",    "label_ko": "영구 귀국/제3국 이동 가능성", "label_ja": "永久帰国・第三国移動の可能性" },
-    { "id": "has_drivers_license",               "label_ko": "운전면허 보유",               "label_ja": "運転免許所持" },
-    { "id": "has_car",                           "label_ko": "자동차 보유",                 "label_ja": "自動車所持" },
-    { "id": "has_private_health_ins",            "label_ko": "민간 의료보험 가입",          "label_ja": "民間医療保険加入" },
-    { "id": "has_life_ins",                      "label_ko": "생명보험 가입",               "label_ja": "生命保険加入" },
-    { "id": "has_kids",                          "label_ko": "자녀 동반",                   "label_ja": "子供同伴" },
-    { "id": "has_spouse",                        "label_ko": "배우자 동반",                 "label_ja": "配偶者同伴" },
-    { "id": "visa_change_needed",                "label_ko": "이직으로 비자/소속기관 변경", "label_ja": "在留資格・所属機関の変更" }
+    {
+      "id": "moving",
+      "label_ko": "이사 진행 중",
+      "label_ja": "引っ越し中"
+    },
+    {
+      "id": "jobchange",
+      "label_ko": "이직 진행 중",
+      "label_ja": "転職中"
+    },
+    {
+      "id": "has_job_gap",
+      "label_ko": "퇴직~입사 사이 공백 있음",
+      "label_ja": "退職と入社の間に空白あり"
+    },
+    {
+      "id": "has_company_dc_or_ideco",
+      "label_ko": "기업형 DC 또는 iDeCo 가입",
+      "label_ja": "企業型DC・iDeCo加入"
+    },
+    {
+      "id": "has_side_income_or_freelance",
+      "label_ko": "부업/프리랜서 소득 있음",
+      "label_ja": "副業・フリーランス収入あり"
+    },
+    {
+      "id": "spouse_dependent_or_dependent_visa",
+      "label_ko": "배우자 부양 또는 가족체류비자",
+      "label_ja": "配偶者扶養または家族滞在ビザ"
+    },
+    {
+      "id": "leaving_japan_or_overseas_move",
+      "label_ko": "영구 귀국/제3국 이동 가능성",
+      "label_ja": "永久帰国・第三国移動の可能性"
+    },
+    {
+      "id": "has_drivers_license",
+      "label_ko": "운전면허 보유",
+      "label_ja": "運転免許所持"
+    },
+    {
+      "id": "has_car",
+      "label_ko": "자동차 보유",
+      "label_ja": "自動車所持"
+    },
+    {
+      "id": "has_private_health_ins",
+      "label_ko": "민간 의료보험 가입",
+      "label_ja": "民間医療保険加入"
+    },
+    {
+      "id": "has_life_ins",
+      "label_ko": "생명보험 가입",
+      "label_ja": "生命保険加入"
+    },
+    {
+      "id": "has_kids",
+      "label_ko": "자녀 동반",
+      "label_ja": "子供同伴"
+    },
+    {
+      "id": "has_spouse",
+      "label_ko": "배우자 동반",
+      "label_ja": "配偶者同伴"
+    },
+    {
+      "id": "visa_change_needed",
+      "label_ko": "이직으로 비자/소속기관 변경",
+      "label_ja": "在留資格・所属機関の変更"
+    }
   ],
+  "regions": [
+    {
+      "id": "hokkaido",
+      "label_ko": "홋카이도",
+      "label_ja": "北海道"
+    },
+    {
+      "id": "aomori",
+      "label_ko": "아오모리현",
+      "label_ja": "青森県"
+    },
+    {
+      "id": "iwate",
+      "label_ko": "이와테현",
+      "label_ja": "岩手県"
+    },
+    {
+      "id": "miyagi",
+      "label_ko": "미야기현",
+      "label_ja": "宮城県"
+    },
+    {
+      "id": "akita",
+      "label_ko": "아키타현",
+      "label_ja": "秋田県"
+    },
+    {
+      "id": "yamagata",
+      "label_ko": "야마가타현",
+      "label_ja": "山形県"
+    },
+    {
+      "id": "fukushima",
+      "label_ko": "후쿠시마현",
+      "label_ja": "福島県"
+    },
+    {
+      "id": "ibaraki",
+      "label_ko": "이바라키현",
+      "label_ja": "茨城県"
+    },
+    {
+      "id": "tochigi",
+      "label_ko": "도치기현",
+      "label_ja": "栃木県"
+    },
+    {
+      "id": "gunma",
+      "label_ko": "군마현",
+      "label_ja": "群馬県"
+    },
+    {
+      "id": "saitama",
+      "label_ko": "사이타마현",
+      "label_ja": "埼玉県"
+    },
+    {
+      "id": "chiba",
+      "label_ko": "지바현",
+      "label_ja": "千葉県"
+    },
+    {
+      "id": "tokyo",
+      "label_ko": "도쿄도",
+      "label_ja": "東京都"
+    },
+    {
+      "id": "kanagawa",
+      "label_ko": "가나가와현",
+      "label_ja": "神奈川県"
+    },
+    {
+      "id": "niigata",
+      "label_ko": "니가타현",
+      "label_ja": "新潟県"
+    },
+    {
+      "id": "toyama",
+      "label_ko": "도야마현",
+      "label_ja": "富山県"
+    },
+    {
+      "id": "ishikawa",
+      "label_ko": "이시카와현",
+      "label_ja": "石川県"
+    },
+    {
+      "id": "fukui",
+      "label_ko": "후쿠이현",
+      "label_ja": "福井県"
+    },
+    {
+      "id": "yamanashi",
+      "label_ko": "야마나시현",
+      "label_ja": "山梨県"
+    },
+    {
+      "id": "nagano",
+      "label_ko": "나가노현",
+      "label_ja": "長野県"
+    },
+    {
+      "id": "gifu",
+      "label_ko": "기후현",
+      "label_ja": "岐阜県"
+    },
+    {
+      "id": "shizuoka",
+      "label_ko": "시즈오카현",
+      "label_ja": "静岡県"
+    },
+    {
+      "id": "aichi",
+      "label_ko": "아이치현",
+      "label_ja": "愛知県"
+    },
+    {
+      "id": "mie",
+      "label_ko": "미에현",
+      "label_ja": "三重県"
+    },
+    {
+      "id": "shiga",
+      "label_ko": "시가현",
+      "label_ja": "滋賀県"
+    },
+    {
+      "id": "kyoto",
+      "label_ko": "교토부",
+      "label_ja": "京都府"
+    },
+    {
+      "id": "osaka",
+      "label_ko": "오사카부",
+      "label_ja": "大阪府"
+    },
+    {
+      "id": "hyogo",
+      "label_ko": "효고현",
+      "label_ja": "兵庫県"
+    },
+    {
+      "id": "nara",
+      "label_ko": "나라현",
+      "label_ja": "奈良県"
+    },
+    {
+      "id": "wakayama",
+      "label_ko": "와카야마현",
+      "label_ja": "和歌山県"
+    },
+    {
+      "id": "tottori",
+      "label_ko": "돗토리현",
+      "label_ja": "鳥取県"
+    },
+    {
+      "id": "shimane",
+      "label_ko": "시마네현",
+      "label_ja": "島根県"
+    },
+    {
+      "id": "okayama",
+      "label_ko": "오카야마현",
+      "label_ja": "岡山県"
+    },
+    {
+      "id": "hiroshima",
+      "label_ko": "히로시마현",
+      "label_ja": "広島県"
+    },
+    {
+      "id": "yamaguchi",
+      "label_ko": "야마구치현",
+      "label_ja": "山口県"
+    },
+    {
+      "id": "tokushima",
+      "label_ko": "도쿠시마현",
+      "label_ja": "徳島県"
+    },
+    {
+      "id": "kagawa",
+      "label_ko": "가가와현",
+      "label_ja": "香川県"
+    },
+    {
+      "id": "ehime",
+      "label_ko": "에히메현",
+      "label_ja": "愛媛県"
+    },
+    {
+      "id": "kochi",
+      "label_ko": "고치현",
+      "label_ja": "高知県"
+    },
+    {
+      "id": "fukuoka",
+      "label_ko": "후쿠오카현",
+      "label_ja": "福岡県"
+    },
+    {
+      "id": "saga",
+      "label_ko": "사가현",
+      "label_ja": "佐賀県"
+    },
+    {
+      "id": "nagasaki",
+      "label_ko": "나가사키현",
+      "label_ja": "長崎県"
+    },
+    {
+      "id": "kumamoto",
+      "label_ko": "구마모토현",
+      "label_ja": "熊本県"
+    },
+    {
+      "id": "oita",
+      "label_ko": "오이타현",
+      "label_ja": "大分県"
+    },
+    {
+      "id": "miyazaki",
+      "label_ko": "미야자키현",
+      "label_ja": "宮崎県"
+    },
+    {
+      "id": "kagoshima",
+      "label_ko": "가고시마현",
+      "label_ja": "鹿児島県"
+    },
+    {
+      "id": "okinawa",
+      "label_ko": "오키나와현",
+      "label_ja": "沖縄県"
+    }
+  ],
+  "region_resources": {
+    "sodai_gomi": {
+      "tokyo": [
+        {
+          "label_ko": "도쿄도 대형폐기물(粗大ごみ) 배출 안내",
+          "url": "https://www.kankyo.metro.tokyo.lg.jp/resource/industrial_waste/improper_handling/fuyouhin",
+          "publisher": "東京都環境局"
+        }
+      ],
+      "_default": []
+    },
+    "yakusho": {
+      "tokyo": [
+        {
+          "label_ko": "도쿄도 내 区市町村 창구 목록",
+          "url": "https://www.metro.tokyo.lg.jp/sitemap/link/link04",
+          "publisher": "東京都"
+        }
+      ],
+      "_default": [
+        {
+          "label_ko": "이사 원스톱 서비스(전입·전출 절차, 전국 공통)",
+          "url": "https://www.digital.go.jp/policies/moving_onestop_service",
+          "publisher": "デジタル庁"
+        }
+      ]
+    }
+  },
   "categories": [
     {
       "id": "cat_moving",
       "icon": "📦",
       "label_ko": "이사",
       "label_ja": "引っ越し",
-      "visible_when": { "any_of": ["moving"] },
+      "visible_when": {
+        "any_of": [
+          "moving"
+        ]
+      },
       "subcategories": [
         {
           "id": "cat_moving_decide",
@@ -37,31 +362,59 @@
               "title_ko": "새 집 후보 비교·내람",
               "title_ja": "賃貸物件の比較・内見",
               "description_ko": "지역·예산을 정하고 부동산 사이트·중개업소로 물건을 비교·내람(内見)합니다. 초기비용(敷金·礼金·仲介手数料)도 함께 확인하세요.",
-              "timeline": "D-60", "timeline_offset_days": -60,
-              "tags": ["계약"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-60",
+              "timeline_offset_days": -60,
+              "tags": [
+                "계약"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "mv_decide_cancel_notice_001",
               "title_ko": "현재 집 해약 통지",
               "title_ja": "現賃貸物件の解約通知",
               "description_ko": "해약 통지는 보통 퇴거 1개월 전(계약서에 따라 2개월 전)까지 집주인·관리회사에 해야 합니다. 늦으면 그만큼 월세를 더 내므로 계약서의 통지 기간(予告期間)을 반드시 확인하세요.",
-              "timeline": "D-45", "timeline_offset_days": -45,
-              "tags": ["계약", "금전"], "risk_level": "money_loss",
+              "timeline": "D-45",
+              "timeline_offset_days": -45,
+              "tags": [
+                "계약",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "민법 제617조 (임대차 해지 통지)", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "publisher": "e-Gov法令検索", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "민법 제617조 (임대차 해지 통지)",
+                  "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+                  "publisher": "e-Gov法令検索",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "mv_decide_mover_quote_001",
               "title_ko": "이사업체 견적·예약",
               "title_ja": "引越し業者の見積り・予約",
               "description_ko": "여러 업체 견적(見積り)을 비교·예약합니다. 3~4월 성수기(繁忙期)는 요금이 급등하고 예약이 빨리 차므로 미리 잡으세요.",
-              "timeline": "D-30", "timeline_offset_days": -30,
-              "tags": ["계약"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-30",
+              "timeline_offset_days": -30,
+              "tags": [
+                "계약"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -75,44 +428,88 @@
               "title_ko": "인터넷 회선 이전 수속",
               "title_ja": "インターネット回線の移転手続き",
               "description_ko": "광회선(光回線) 이전·신규는 개통 공사에 수주가 걸릴 수 있어 이사 2~4주 전 신청을 권장합니다. 신축·다른 사업자 지역은 위약금·공사비가 생길 수 있습니다.",
-              "timeline": "D-21", "timeline_offset_days": -21,
-              "tags": ["통신"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": true, "links": []
+              "timeline": "D-21",
+              "timeline_offset_days": -21,
+              "tags": [
+                "통신"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": true,
+              "links": []
             },
             {
               "id": "mv_prep_lifeline_001",
               "title_ko": "전기·가스·수도 이전 수속",
               "title_ja": "電気・ガス・水道の移転手続き",
               "description_ko": "현재 거주지 사용 정지(使用停止)와 새 거주지 사용 개시(使用開始)를 신청합니다. 특히 가스 개통(開栓)은 입회(立会い)가 필요해 미리 일정 예약이 필수입니다.",
-              "timeline": "D-14", "timeline_offset_days": -14,
-              "tags": ["생활"], "risk_level": "service_interruption",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-14",
+              "timeline_offset_days": -14,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "service_interruption",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "mv_prep_sodai_gomi_001",
               "title_ko": "대형쓰레기·불용품 처분",
               "title_ja": "粗大ごみ・不用品の処分",
               "description_ko": "대형쓰레기(粗大ごみ)는 지자체 접수센터에 사전 예약 후 처리권(処理券)을 사서 배출합니다. 수거까지 수일~수주 걸릴 수 있어 조기 예약 권장. 에어컨·TV·냉장고·세탁기는 가전리사이클법(家電リサイクル法) 대상으로 별도 처리합니다.",
-              "timeline": "D-14", "timeline_offset_days": -14,
-              "tags": ["생활"], "risk_level": "convenience",
+              "timeline": "D-14",
+              "timeline_offset_days": -14,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "convenience",
               "visible_when": {},
               "sources": [
-                { "label_ko": "가전리사이클법 안내", "url": "https://www.env.go.jp/recycle/kaden/", "publisher": "環境省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "가전리사이클법 안내",
+                  "url": "https://www.env.go.jp/recycle/kaden/",
+                  "publisher": "環境省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": [],
+              "region_key": "sodai_gomi"
             },
             {
               "id": "mv_prep_mail_forward_001",
               "title_ko": "우편물 전송 신청",
               "title_ja": "郵便物の転送サービス（e転居）",
               "description_ko": "일본우편의 전거·전송 서비스를 신청하면 옛 주소로 온 우편물을 1년간 새 주소로 무료 전송합니다. 온라인(e転居)으로도 신청할 수 있습니다.",
-              "timeline": "D-7", "timeline_offset_days": -7,
-              "tags": ["생활"], "risk_level": "convenience",
+              "timeline": "D-7",
+              "timeline_offset_days": -7,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "convenience",
               "visible_when": {},
               "sources": [
-                { "label_ko": "전거·전송 서비스", "url": "https://www.post.japanpost.jp/service/tenkyo/", "publisher": "日本郵便", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "전거·전송 서비스",
+                  "url": "https://www.post.japanpost.jp/service/tenkyo/",
+                  "publisher": "日本郵便",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": [
+                {
+                  "label_ko": "e転居 온라인 신청 바로가기",
+                  "url": "https://lp.jpetn.pf.japanpost.jp/guide/"
+                }
+              ]
             }
           ]
         },
@@ -126,31 +523,58 @@
               "title_ko": "구 거주지 가스 폐전·퇴거 입회",
               "title_ja": "旧居のガス閉栓・退去立会い",
               "description_ko": "가스 폐전(閉栓)에 입회가 필요한 경우가 있고, 임대주택은 관리회사와의 퇴거 입회(退去立会い)에서 원상복구·실내 상태를 확인하고 열쇠를 반납합니다. 이때 敷金(보증금) 정산 내역을 확인하세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["생활"], "risk_level": "service_interruption",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "service_interruption",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "mv_dday_utility_start_001",
               "title_ko": "새 거주지 전기·수도·가스 사용 개시",
               "title_ja": "新居の電気・水道・ガス使用開始",
               "description_ko": "차단기(ブレーカー)·수도 밸브를 켜고, 사전 예약한 가스 개통(開栓) 입회를 진행합니다. 가스는 입회 없이는 사용할 수 없습니다.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["생활"], "risk_level": "service_interruption",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "service_interruption",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "mv_dday_baggage_check_001",
               "title_ko": "이삿짐 인수·파손 확인",
               "title_ja": "荷物の受け取り・破損確認",
               "description_ko": "짐 개수와 가구·가전 파손 여부를 그 자리에서 확인합니다. 운송 중 파손은 표준 이사 운송 약관상 기한 내(통상 인도 후 3개월 이내)에 업체에 통지해야 보상받을 수 있으니 즉시 확인·신고하세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["금전"], "risk_level": "money_loss",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "표준 이사 운송 약관", "url": "https://www.mlit.go.jp/jidosha/jidosha_tk2_000020.html", "publisher": "国土交通省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "표준 이사 운송 약관",
+                  "url": "https://www.mlit.go.jp/jidosha/jidosha_tk2_000020.html",
+                  "publisher": "国土交通省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -164,20 +588,33 @@
               "title_ko": "회사·학교에 주소 변경 신고",
               "title_ja": "勤務先・学校への住所変更届出",
               "description_ko": "근무처에 주소 변경을 신고합니다. 통근수당(通勤手当)·연말정산·사회보험 주소 갱신과 연관되므로 빠르게 처리하세요.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["생활"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "생활"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         }
-      ]
+      ],
+      "anchor": "move"
     },
     {
       "id": "cat_jobchange",
       "icon": "💼",
       "label_ko": "이직",
       "label_ja": "転職",
-      "visible_when": { "any_of": ["jobchange"] },
+      "visible_when": {
+        "any_of": [
+          "jobchange"
+        ]
+      },
       "subcategories": [
         {
           "id": "cat_jc_offer",
@@ -189,26 +626,56 @@
               "title_ko": "오퍼 직무와 재류자격 적합성 확인",
               "title_ja": "オファー内容と在留資格の適合性を確認",
               "description_ko": "새 회사 업무가 현 재류자격(예: 技術・人文知識・国際業務)의 활동 범위에 맞는지 확인하세요. 직종이 크게 달라지면 별도 허가가 필요할 수 있습니다.",
-              "timeline": "D-30", "timeline_offset_days": -30,
-              "tags": ["비자"], "risk_level": "service_interruption",
-              "visible_when": { "any_of": ["visa_change_needed"] },
-              "sources": [
-                { "label_ko": "취로자격증명서 교부신청", "url": "https://www.moj.go.jp/isa/applications/procedures/16-5.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+              "timeline": "D-30",
+              "timeline_offset_days": -30,
+              "tags": [
+                "비자"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "service_interruption",
+              "visible_when": {
+                "any_of": [
+                  "visa_change_needed"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "취로자격증명서 교부신청",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/16-5.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_offer_work_cert_001",
               "title_ko": "취로자격증명서 발급으로 적법성 사전 확인",
               "title_ja": "就労資格証明書で就労可否を事前確認",
               "description_ko": "새 직장 업무가 현 재류자격으로 적법한지 입관이 증명해 주는 서류입니다(수수료 1,200엔). 의무는 아니나 직무가 바뀌는 전직이면 갱신 거부 리스크를 줄여 줍니다.",
-              "timeline": "D-14", "timeline_offset_days": -14,
-              "tags": ["비자"], "risk_level": "convenience",
-              "visible_when": { "any_of": ["visa_change_needed"] },
-              "sources": [
-                { "label_ko": "취로자격증명서 교부신청", "url": "https://www.moj.go.jp/isa/applications/procedures/16-5.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+              "timeline": "D-14",
+              "timeline_offset_days": -14,
+              "tags": [
+                "비자"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "convenience",
+              "visible_when": {
+                "any_of": [
+                  "visa_change_needed"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "취로자격증명서 교부신청",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/16-5.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -222,101 +689,202 @@
               "title_ko": "퇴직 의사 통지",
               "title_ja": "退職の意思表示（退職通知）",
               "description_ko": "취업규칙에 정해진 통지 시기(통상 1~2개월 전)를 확인해 사직서를 제출합니다. 기간의 정함 없는 고용은 민법상 신청 후 2주 경과로 종료 가능하나, 인수인계를 위해 회사 규정 시기를 따르는 것이 안전합니다.",
-              "timeline": "D-30", "timeline_offset_days": -30,
-              "tags": ["퇴직"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D-30",
+              "timeline_offset_days": -30,
+              "tags": [
+                "퇴직"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_shozoku_leave_001",
               "title_ko": "소속(계약)기관 신고 — 퇴직일로부터 14일 이내",
               "title_ja": "所属（契約）機関に関する届出（退職から14日以内）",
               "description_ko": "技術・人文知識・国際業務, 高度専門職, 経営・管理, 技能, 特定技能 등 취로계 재류자격자는 계약 종료(퇴직)일로부터 14일 이내에 출입국재류관리청에 신고해야 합니다. 전자신고·창구·우편 가능, 자료 첨부 불요. 미신고 시 갱신 불이익·벌칙 대상.",
-              "timeline": "D+14", "timeline_offset_days": 14,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+14",
+              "timeline_offset_days": 14,
+              "tags": [
+                "비자",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "소속(계약)기관에 관한 신고", "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00015.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "소속(계약)기관에 관한 신고",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00015.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_gensen_001",
               "title_ko": "원천징수표 수령",
               "title_ja": "源泉徴収票を受け取る",
               "description_ko": "그 해 급여·원천징수 내역이 든 源泉徴収票를 받으세요. 같은 해 안에 전직하면 새 회사에 제출해야 연말정산(年末調整)이 됩니다. 통상 퇴직 후 1개월 이내 교부(소득세법상 의무).",
-              "timeline": "D+30", "timeline_offset_days": 30,
-              "tags": ["퇴직", "세금"], "risk_level": "service_interruption",
+              "timeline": "D+30",
+              "timeline_offset_days": 30,
+              "tags": [
+                "퇴직",
+                "세금"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "원천징수표 (국세청 No.7411)", "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hotei/7411.htm", "publisher": "国税庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "원천징수표 (국세청 No.7411)",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hotei/7411.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_koyou_hihokensha_001",
               "title_ko": "고용보험 피보험자증 수령",
               "title_ja": "雇用保険被保険者証を受け取る",
               "description_ko": "고용보험 피보험자번호는 평생 이어지는 번호로, 전직 후 새 회사 가입에 사용합니다. 회사 보관분을 받아 새 회사에 제출하세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["퇴직"], "risk_level": "service_interruption",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "퇴직"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "고용보험 제도", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/koyouhoken/index.html", "publisher": "厚生労働省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "고용보험 제도",
+                  "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/koyouhoken/index.html",
+                  "publisher": "厚生労働省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_rishokuhyo_001",
               "title_ko": "이직표 수령 — 실업급여 신청 시 필수",
               "title_ja": "離職票を受け取る（失業給付に必要）",
               "description_ko": "離職票는 실업급여(基本手当) 신청 시 헬로워크에 내는 서류입니다. 즉시 전직이 확정이면 불요하나, 공백기가 생기거나 입사일 미정이면 반드시 받아두세요. 통상 퇴직 후 10일~2주 내 발행.",
-              "timeline": "D+14", "timeline_offset_days": 10,
-              "tags": ["퇴직", "금전"], "risk_level": "money_loss",
-              "visible_when": { "any_of": ["has_job_gap"] },
-              "sources": [
-                { "label_ko": "이직 시 절차 (고용보험)", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufu/index.html", "publisher": "厚生労働省", "last_verified": "2026-05-29" }
+              "timeline": "D+14",
+              "timeline_offset_days": 10,
+              "tags": [
+                "퇴직",
+                "금전"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "money_loss",
+              "visible_when": {
+                "any_of": [
+                  "has_job_gap"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "이직 시 절차 (고용보험)",
+                  "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufu/index.html",
+                  "publisher": "厚生労働省",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_nenkin_no_001",
               "title_ko": "기초연금번호 통지서 확인",
               "title_ja": "基礎年金番号通知書（年金手帳）を確認",
               "description_ko": "새 회사 후생연금 가입에 기초연금번호가 필요합니다. 회사 보관분을 돌려받거나 번호를 확인해 새 회사에 알려주세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["퇴직", "연금"], "risk_level": "service_interruption",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "퇴직",
+                "연금"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "기초연금번호통지서 안내", "url": "https://www.nenkin.go.jp/service/seido/kiso-no/kisonenkinbango.html", "publisher": "日本年金機構", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "기초연금번호통지서 안내",
+                  "url": "https://www.nenkin.go.jp/service/seido/kiso-no/kisonenkinbango.html",
+                  "publisher": "日本年金機構",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_taishoku_shotoku_001",
               "title_ko": "퇴직금 있으면 퇴직소득 수급에 관한 신고서 제출",
               "title_ja": "退職金があれば「退職所得の受給に関する申告書」を提出",
               "description_ko": "퇴직금을 받는다면 이 신고서를 회사에 제출하세요. 미제출 시 퇴직금 전액에 일률 20.42% 원천징수가 적용되어 退職所得控除를 못 받습니다(추후 확정신고로 환급은 가능하나 번거로움).",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["퇴직", "세금", "금전"], "risk_level": "money_loss",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "퇴직",
+                "세금",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "퇴직소득 수급에 관한 신고 (국세청 A2-29)", "url": "https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/gensen/annai/1648_37.htm", "publisher": "国税庁", "last_verified": "2026-05-29" },
-                { "label_ko": "퇴직수당 등 원천징수 (국세청 No.2732)", "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2732.htm", "publisher": "国税庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "퇴직소득 수급에 관한 신고 (국세청 A2-29)",
+                  "url": "https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/gensen/annai/1648_37.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "퇴직수당 등 원천징수 (국세청 No.2732)",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2732.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_resign_juminzei_method_001",
               "title_ko": "주민세 징수 방식 확인 (일괄/보통징수)",
               "title_ja": "住民税の徴収方法を確認（一括/普通徴収）",
               "description_ko": "주민세는 전년 소득 기준으로 6월~다음해 5월에 부과됩니다. 1~5월 퇴직 시 미징수분은 원칙적으로 최종급여·퇴직금에서 일괄징수, 6~12월 퇴직 시 일괄 또는 보통징수(본인 납부) 중 선택 가능하므로 회사에 의사를 전달하세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["세금", "금전"], "risk_level": "money_loss",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "세금",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "특별징수 절차 (도쿄도 주세국)", "url": "https://www.tax.metro.tokyo.lg.jp/kazei/life/kojin_ju/tokubetsu/tetsuzuki", "publisher": "東京都主税局", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "특별징수 절차 (도쿄도 주세국)",
+                  "url": "https://www.tax.metro.tokyo.lg.jp/kazei/life/kojin_ju/tokubetsu/tetsuzuki",
+                  "publisher": "東京都主税局",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -324,87 +892,176 @@
           "id": "cat_jc_gap",
           "label_ko": "공백기",
           "label_ja": "ブランク期間",
-          "visible_when": { "any_of": ["has_job_gap"] },
+          "visible_when": {
+            "any_of": [
+              "has_job_gap"
+            ]
+          },
           "items": [
             {
               "id": "jc_gap_ninikeizoku_001",
               "title_ko": "건강보험 임의계속 신청 — 자격상실일로부터 20일 이내",
               "title_ja": "健康保険の任意継続を申請（資格喪失日から20日以内）",
               "description_ko": "공백기 건강보험 유지 방법. 퇴직 전 피보험자기간이 연속 2개월 이상이어야 하며, 신청 기한은 자격상실일(퇴직 다음 날)로부터 20일 이내입니다. 1일이라도 넘기면 원칙적으로 가입 불가하므로 전자신청 권장. 최장 2년, 보험료 본인 전액 부담.",
-              "timeline": "D+14", "timeline_offset_days": 20,
-              "tags": ["보험", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+14",
+              "timeline_offset_days": 20,
+              "tags": [
+                "보험",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "임의계속 가입 절차 (FAQ)", "url": "https://www.kyoukaikenpo.or.jp/faq/voluntary_continuation/003/index.html", "publisher": "協会けんぽ", "last_verified": "2026-05-29" },
-                { "label_ko": "임의계속 가입조건", "url": "https://www.kyoukaikenpo.or.jp/g6/cat650/r315/", "publisher": "協会けんぽ", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "임의계속 가입 절차 (FAQ)",
+                  "url": "https://www.kyoukaikenpo.or.jp/faq/voluntary_continuation/003/index.html",
+                  "publisher": "協会けんぽ",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "임의계속 가입조건",
+                  "url": "https://www.kyoukaikenpo.or.jp/g6/cat650/r315/",
+                  "publisher": "協会けんぽ",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_gap_kokuho_001",
               "title_ko": "국민건강보험 가입 — 임의계속 대신 선택 시",
               "title_ja": "国民健康保険に加入（任意継続を選ばない場合）",
               "description_ko": "임의계속 대신 시구정촌 국민건강보험에 가입할 수도 있습니다. 퇴직(피용자보험 상실)일로부터 14일 이내 시구정촌 신고가 원칙. 보험료는 전년 소득 기준이므로 임의계속과 비교해 유리한 쪽을 선택하세요.",
-              "timeline": "D+14", "timeline_offset_days": 14,
-              "tags": ["보험"], "risk_level": "service_interruption",
+              "timeline": "D+14",
+              "timeline_offset_days": 14,
+              "tags": [
+                "보험"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "국민건강보험 제도", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html", "publisher": "厚生労働省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "국민건강보험 제도",
+                  "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html",
+                  "publisher": "厚生労働省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_gap_kokunenkin_001",
               "title_ko": "국민연금 제1호 종별변경 — 퇴직 다음 날로부터 14일 이내",
               "title_ja": "国民年金 第1号への種別変更（退職日翌日から14日以内）",
               "description_ko": "공백기 동안 후생연금(제2호)에서 국민연금 제1호로 종별변경해야 합니다. 기한은 퇴직 다음 날로부터 14일 이내, 시구정촌 창구. 미신고 시 미납기간이 되어 장래 연금액·장애/유족연금 자격에 영향. 납부가 어려우면 면제·납부유예 신청도 검토하세요.",
-              "timeline": "D+14", "timeline_offset_days": 14,
-              "tags": ["연금", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+14",
+              "timeline_offset_days": 14,
+              "tags": [
+                "연금",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "국민연금 가입 절차", "url": "https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-04.html", "publisher": "日本年金機構", "last_verified": "2026-05-29" },
-                { "label_ko": "퇴직 시 국민연금 절차", "url": "https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-03.html", "publisher": "日本年金機構", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "국민연금 가입 절차",
+                  "url": "https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-04.html",
+                  "publisher": "日本年金機構",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "퇴직 시 국민연금 절차",
+                  "url": "https://www.nenkin.go.jp/service/kokunen/kanyu/20140710-03.html",
+                  "publisher": "日本年金機構",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_gap_hellowork_001",
               "title_ko": "헬로워크 구직신청·실업급여 수급자격 신청",
               "title_ja": "ハローワークで求職申込・基本手当の受給資格決定",
               "description_ko": "거주지 관할 헬로워크에 離職票·본인확인서류·통장을 지참해 구직신청합니다. 신청 후 7일 대기, 자기사정 퇴직은 2025년 4월 개정으로 급여제한이 원칙 1개월로 단축(5년 내 2회 이상 자기사정 퇴직 시 3개월). 빨리 신청할수록 수급 개시가 빠릅니다.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["고용보험", "금전"], "risk_level": "money_loss",
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "고용보험",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "기본수당 Q&A", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000139508.html", "publisher": "厚生労働省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "기본수당 Q&A",
+                  "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000139508.html",
+                  "publisher": "厚生労働省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_gap_dc_ideco_001",
               "title_ko": "기업형 DC/iDeCo 이환 — 자격상실 다음 달부터 6개월 이내",
               "title_ja": "企業型DC/iDeCoの移換（資格喪失翌月から6か月以内）",
               "description_ko": "企業型DC 가입자였다면 자격상실 다음 달부터 6개월 이내에 이환해야 합니다. 새 회사 企業型DC가 있으면 그쪽으로, 없으면 iDeCo로. 6개월 내 미처리 시 국민연금기금연합회로 '자동이환'되어 ①현금으로 묶여 운용 불가 ②관리수수료만 차감 ③수급 개시가 늦어질 수 있습니다.",
-              "timeline": "D+90", "timeline_offset_days": 180,
-              "tags": ["연금", "금전"], "risk_level": "money_loss",
-              "visible_when": { "any_of": ["has_company_dc_or_ideco"] },
-              "sources": [
-                { "label_ko": "전직·퇴직하신 분께 (iDeCo 공식)", "url": "https://www.ideco-koushiki.jp/retirement/", "publisher": "国民年金基金連合会(iDeCo公式)", "last_verified": "2026-05-29" }
+              "timeline": "D+90",
+              "timeline_offset_days": 180,
+              "tags": [
+                "연금",
+                "금전"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "money_loss",
+              "visible_when": {
+                "any_of": [
+                  "has_company_dc_or_ideco"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "전직·퇴직하신 분께 (iDeCo 공식)",
+                  "url": "https://www.ideco-koushiki.jp/retirement/",
+                  "publisher": "国民年金基金連合会(iDeCo公式)",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_gap_juminzei_futsu_001",
               "title_ko": "주민세 보통징수 전환 시 납부서 직접 납부 관리",
               "title_ja": "住民税が普通徴収になった場合の納付管理",
               "description_ko": "공백기 주민세가 보통징수로 전환되면 시구정촌에서 납부서가 옵니다. 급여 천공이 없으므로 본인이 각 납기(통상 연 4기) 내 직접 납부해야 합니다. 미납 시 연체금·체납처분 리스크가 있으니 납부서 도착을 확인하세요.",
-              "timeline": "D+30", "timeline_offset_days": 30,
-              "tags": ["세금", "금전"], "risk_level": "money_loss",
+              "timeline": "D+30",
+              "timeline_offset_days": 30,
+              "tags": [
+                "세금",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "개인주민세 안내", "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/kojin_zei.html", "publisher": "総務省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "개인주민세 안내",
+                  "url": "https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/kojin_zei.html",
+                  "publisher": "総務省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -418,56 +1075,107 @@
               "title_ko": "신규 소속(계약)기관 신고 — 입사일로부터 14일 이내",
               "title_ja": "新所属（契約）機関に関する届出（契約締結から14日以内）",
               "description_ko": "새 회사와 계약을 체결(입사)하면 14일 이내에 출입국재류관리청에 '계약기관에 관한 신고(신규 계약 체결)'를 해야 합니다. 퇴직·입사가 가까우면 종료·체결을 동시에 신고하는 양식(참고양식 1의7)도 가능. 전자신고·창구·우편 가능.",
-              "timeline": "D+14", "timeline_offset_days": 14,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+14",
+              "timeline_offset_days": 14,
+              "tags": [
+                "비자",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "소속(계약)기관에 관한 신고", "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00015.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "소속(계약)기관에 관한 신고",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00015.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_join_shaho_001",
               "title_ko": "새 회사 사회보험(건강보험·후생연금) 가입",
               "title_ja": "新しい会社で社会保険（健康保険・厚生年金）に加入",
               "description_ko": "입사하면 새 회사가 건강보험·후생연금 가입을 진행합니다(사업주가 자격취득일로부터 5일 이내 신고). 본인은 기초연금번호·부양가족 정보를 제공. 임의계속·국민건강보험에 가입했었다면 새 보험증 발급 후 해지 절차를 잊지 마세요.",
-              "timeline": "D-Day", "timeline_offset_days": 0,
-              "tags": ["보험", "연금"], "risk_level": "service_interruption",
+              "timeline": "D-Day",
+              "timeline_offset_days": 0,
+              "tags": [
+                "보험",
+                "연금"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "취직 시 후생연금·건강보험 절차", "url": "https://www.nenkin.go.jp/service/kounen/tekiyo/hihokensha/20140605.html", "publisher": "日本年金機構", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "취직 시 후생연금·건강보험 절차",
+                  "url": "https://www.nenkin.go.jp/service/kounen/tekiyo/hihokensha/20140605.html",
+                  "publisher": "日本年金機構",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_join_gensen_submit_001",
               "title_ko": "새 회사에 원천징수표 제출 (연내 전직 시)",
               "title_ja": "新しい会社に源泉徴収票を提出（年末調整）",
               "description_ko": "같은 해(1~12월) 안에 전직했다면 이전 회사 源泉徴収票를 새 회사에 제출해야 합니다. 새 회사가 두 회사 급여를 합산해 연말정산을 해 줍니다. 미제출 시 본인이 확정신고(確定申告)를 해야 합니다.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["세금"], "risk_level": "service_interruption",
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "세금"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "연말정산이란", "url": "https://www.nta.go.jp/users/gensen/nencho/index.htm", "publisher": "国税庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "연말정산이란",
+                  "url": "https://www.nta.go.jp/users/gensen/nencho/index.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "jc_join_juminzei_special_001",
               "title_ko": "주민세 특별징수 재개",
               "title_ja": "住民税の特別徴収を再開（給与所得者異動届出書）",
               "description_ko": "공백기에 보통징수로 바꿨던 주민세를 새 회사 급여 천공(특별징수)으로 되돌리려면 새 회사를 통해 '급여소득자 이동신고서'를 시구정촌에 제출합니다. 본인은 새 회사에 특별징수 희망 의사를 전달하면 됩니다.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["세금"], "risk_level": "convenience",
-              "visible_when": { "any_of": ["has_job_gap"] },
-              "sources": [
-                { "label_ko": "특별징수 절차 (도쿄도 주세국)", "url": "https://www.tax.metro.tokyo.lg.jp/kazei/life/kojin_ju/tokubetsu/tetsuzuki", "publisher": "東京都主税局", "last_verified": "2026-05-29" }
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "세금"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "convenience",
+              "visible_when": {
+                "any_of": [
+                  "has_job_gap"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "특별징수 절차 (도쿄도 주세국)",
+                  "url": "https://www.tax.metro.tokyo.lg.jp/kazei/life/kojin_ju/tokubetsu/tetsuzuki",
+                  "publisher": "東京都主税局",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         }
-      ]
+      ],
+      "anchor": "job"
     },
     {
       "id": "cat_admin",
@@ -486,52 +1194,108 @@
               "title_ko": "재류카드 주소변경 신고 — 이사 후 14일 이내",
               "title_ja": "在留カードの住居地変更届出（引越し後14日以内）",
               "description_ko": "이사한 날부터 14일 이내에 새 주소지 시구정촌(市区町村)에서 주소(住居地) 변경 신고를 해야 합니다. 재류카드를 지참해 전입신고(転入届)를 하면 출입국재류관리청에 신고한 것으로 간주(みなし)되어 별도 입관 신고는 불요. 미신고 시 20만엔 이하 벌금, 90일 경과 시 재류자격 취소 위험.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
-              "visible_when": { "any_of": ["moving"] },
-              "sources": [
-                { "label_ko": "주거지 변경 신고(중장기 재류자)", "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00023.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "비자",
+                "기한"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "legal_deadline",
+              "visible_when": {
+                "any_of": [
+                  "moving"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "주거지 변경 신고(중장기 재류자)",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00023.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_visa_renew_001",
               "title_ko": "재류기간 갱신 허가 신청 — 만료 약 3개월 전부터",
               "title_ja": "在留期間更新許可申請（満了の約3か月前から）",
               "description_ko": "재류기간 만료일의 약 3개월 전부터 접수 가능(재류기간 6개월 이상인 경우). 이직 직후라면 다음 갱신 심사가 까다로울 수 있어 일정을 미리 확인하세요. 표준 처리 2주~1개월, 수수료 6,000엔(온라인 5,500엔). 만료일 도과 시 오버스테이 위험.",
-              "timeline": null, "timeline_offset_days": null,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "비자",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "재류기간 갱신 허가 신청", "url": "https://www.moj.go.jp/isa/applications/procedures/16-3.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "재류기간 갱신 허가 신청",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/16-3.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_visa_card_reissue_001",
               "title_ko": "재류카드 분실·도난 시 재교부 신청 — 안 날부터 14일 이내",
               "title_ja": "在留カードの紛失・盗難による再交付申請（知った日から14日以内）",
               "description_ko": "분실·도난·멸실을 안 날(국외에서 안 경우 재입국일)로부터 14일 이내에 거주지 관할 지방출입국재류관리국에 재교부를 신청해야 합니다. 경찰 신고증명서(유실물/도난) 또는 이재증명 필요. 분실 등 재교부는 수수료 무료. 미신청 시 1년 이하 징역 또는 20만엔 이하 벌금.",
-              "timeline": null, "timeline_offset_days": null,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "비자",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "분실 등에 의한 재류카드 재교부 신청", "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00010.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "분실 등에 의한 재류카드 재교부 신청",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00010.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_visa_family_addr_001",
               "title_ko": "동반가족(배우자·자녀) 재류카드 주소변경 동시 처리",
               "title_ja": "同居家族（配偶者・子）の在留カード住居地変更を同時に",
               "description_ko": "가족 체재(家族滞在) 등 재류자격을 가진 배우자·자녀도 각자 이사 후 14일 이내에 주소변경이 필요합니다. 전입신고 시 가족 전원의 재류카드를 함께 지참하면 일괄 처리됩니다. 세대주가 대리 신고 가능.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["비자", "기한"], "risk_level": "legal_deadline",
-              "visible_when": { "any_of": ["moving"] },
-              "sources": [
-                { "label_ko": "주거지 변경 신고(중장기 재류자)", "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00023.html", "publisher": "出入国在留管理庁", "last_verified": "2026-05-29" }
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "비자",
+                "기한"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "legal_deadline",
+              "visible_when": {
+                "any_of": [
+                  "moving"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "주거지 변경 신고(중장기 재류자)",
+                  "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri10_00023.html",
+                  "publisher": "出入国在留管理庁",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -539,69 +1303,134 @@
           "id": "cat_admin_juminhyo",
           "label_ko": "마이넘버·주민표",
           "label_ja": "マイナンバー・住民票",
-          "visible_when": { "any_of": ["moving"] },
+          "visible_when": {
+            "any_of": [
+              "moving"
+            ]
+          },
           "items": [
             {
               "id": "ad_jmh_tenshutsu_001",
               "title_ko": "전출신고 — 구 주소지에서",
               "title_ja": "転出届（旧住所の役所で）",
               "description_ko": "다른 시구정촌으로 이사 시, 이사 전~이사 후 14일 이내에 구 주소지에서 전출신고를 하고 전출증명서를 받습니다. 마이넘버카드가 있으면 특례전출(창구·온라인)로 증명서 발급을 생략할 수 있습니다. 같은 시구정촌 내 이사는 전거신고(転居届)만 합니다.",
-              "timeline": "D-14", "timeline_offset_days": -10,
-              "tags": ["행정"], "risk_level": "service_interruption",
+              "timeline": "D-14",
+              "timeline_offset_days": -10,
+              "tags": [
+                "행정"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "이사 원스톱 서비스", "url": "https://www.digital.go.jp/policies/moving_onestop_service", "publisher": "デジタル庁", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "이사 원스톱 서비스",
+                  "url": "https://www.digital.go.jp/policies/moving_onestop_service",
+                  "publisher": "デジタル庁",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_jmh_tennyu_001",
               "title_ko": "전입신고 / 전거신고 — 이사 후 14일 이내",
               "title_ja": "転入届・転居届（引越し後14日以内）",
               "description_ko": "새 주소 거주 시작일로부터 14일 이내에 새 주소지 시구정촌에서 전입(전거)신고를 해야 합니다(住民基本台帳法 제22·23조). 정당한 사유 없이 넘기면 5만엔 이하 과료(過料, 제52조 제2항). 이 신고가 주민표·국보·마이넘버·재류카드 주소변경의 기점이며, 재류카드 지참 시 입관 주소변경도 동시 처리됩니다.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["행정", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "행정",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "住民基本台帳法 (e-Gov)", "url": "https://laws.e-gov.go.jp/law/342AC0000000081", "publisher": "e-Gov法令検索", "last_verified": "2026-05-29" },
-                { "label_ko": "신고 지연 시 과료 안내 (広島市)", "url": "https://www.city.hiroshima.lg.jp/faq/koseki/1001558/1001860.html", "publisher": "広島市", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "住民基本台帳法 (e-Gov)",
+                  "url": "https://laws.e-gov.go.jp/law/342AC0000000081",
+                  "publisher": "e-Gov法令検索",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "신고 지연 시 과료 안내 (広島市)",
+                  "url": "https://www.city.hiroshima.lg.jp/faq/koseki/1001558/1001860.html",
+                  "publisher": "広島市",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": [],
+              "region_key": "yakusho"
             },
             {
               "id": "ad_jmh_mynumber_card_001",
               "title_ko": "마이넘버카드 권면 변경·계속이용 — 전입신고 후 90일 이내",
               "title_ja": "マイナンバーカードの券面記載事項変更・継続利用（転入届から90日以内）",
               "description_ko": "전입신고 시 또는 그 후 마이넘버카드 권면(주소) 변경·계속이용 수속을 해야 합니다. 전입신고일로부터 90일 이내에 계속이용(권면 갱신)을 안 하면 카드가 실효되어 수수료를 내고 재교부해야 합니다. 서명용 전자증명서도 주소변경 시 자동 실효되어 재발행이 필요합니다.",
-              "timeline": "D+1", "timeline_offset_days": 1,
-              "tags": ["행정", "금전"], "risk_level": "money_loss",
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": [
+                "행정",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "마이넘버카드 계속이용·권면 변경(90일 실효 명시)", "url": "https://www.city.chiyoda.lg.jp/koho/kurashi/koseki/mainambadenshi/card-keizoku.html", "publisher": "千代田区（総務省制度）", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "마이넘버카드 계속이용·권면 변경(90일 실효 명시)",
+                  "url": "https://www.city.chiyoda.lg.jp/koho/kurashi/koseki/mainambadenshi/card-keizoku.html",
+                  "publisher": "千代田区（総務省制度）",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_jmh_juminhyo_get_001",
               "title_ko": "주민표 발급·확인",
               "title_ja": "住民票の取得・確認",
               "description_ko": "전입신고 완료 후 새 주소가 기재된 주민표를 발급받아 두면 은행·통신·직장 등 각종 주소변경에 사용할 수 있습니다.",
-              "timeline": "D+1", "timeline_offset_days": 2,
-              "tags": ["행정"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D+1",
+              "timeline_offset_days": 2,
+              "tags": [
+                "행정"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_jmh_kokuho_nenkin_addr_001",
               "title_ko": "국민건강보험·국민연금 주소변경",
               "title_ja": "国民健康保険・国民年金の住所変更",
               "description_ko": "국민건강보험은 다른 시구정촌 이사 시 새 주소지에서 가입 절차가 필요하며 보통 전입신고와 함께 처리합니다(전입 후 14일 이내 권장). 국민연금 가입자도 주소변경이 필요하나 마이넘버 연계로 생략되는 경우가 많습니다.",
-              "timeline": "D+1", "timeline_offset_days": 2,
-              "tags": ["보험", "연금"], "risk_level": "service_interruption",
+              "timeline": "D+1",
+              "timeline_offset_days": 2,
+              "tags": [
+                "보험",
+                "연금"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "국민건강보험 제도", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html", "publisher": "厚生労働省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "국민건강보험 제도",
+                  "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html",
+                  "publisher": "厚生労働省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -609,29 +1438,52 @@
           "id": "cat_admin_bank",
           "label_ko": "은행·카드·송금",
           "label_ja": "銀行・カード・送金",
-          "visible_when": { "any_of": ["moving"] },
+          "visible_when": {
+            "any_of": [
+              "moving"
+            ]
+          },
           "items": [
             {
               "id": "ad_bank_addr_001",
               "title_ko": "은행 계좌 주소 변경",
               "title_ja": "銀行口座の住所変更",
               "description_ko": "거래 은행에 주소 변경을 신고합니다(온라인·앱·창구). 주소가 오래되면 중요 서류·재발급 카드가 미도달하고, 본인확인(KYC) 갱신 시 계좌가 제한될 수 있습니다. 외국인 거주자는 재류기간·재류카드 정보 갱신을 함께 요구받기도 합니다.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["은행"], "risk_level": "service_interruption",
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "은행"
+              ],
+              "risk_level": "service_interruption",
               "visible_when": {},
               "sources": [
-                { "label_ko": "주소 변경 절차 (미즈호은행)", "url": "https://www.mizuhobank.co.jp/tetsuduki/jusho_henko/index.html", "publisher": "みずほ銀行", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "주소 변경 절차 (미즈호은행)",
+                  "url": "https://www.mizuhobank.co.jp/tetsuduki/jusho_henko/index.html",
+                  "publisher": "みずほ銀行",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_bank_card_netbank_001",
               "title_ko": "인터넷뱅킹 등록정보·신용카드 주소 변경",
               "title_ja": "ネットバンキング再登録・クレジットカード住所変更",
               "description_ko": "은행 주소 변경 후 인터넷뱅킹 등록정보(주소·연락처)도 갱신하고, 신용카드사·간편결제 주소도 변경합니다. 카드사는 갱신카드 발송·부정이용 통지에 등록 주소를 쓰므로 미변경 시 갱신카드 미도달 위험.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["은행"], "risk_level": "convenience",
-              "visible_when": {}, "sources": [], "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "은행"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -639,33 +1491,60 @@
           "id": "cat_admin_telecom",
           "label_ko": "통신·NHK",
           "label_ja": "通信・NHK",
-          "visible_when": { "any_of": ["moving"] },
+          "visible_when": {
+            "any_of": [
+              "moving"
+            ]
+          },
           "items": [
             {
               "id": "ad_telecom_mobile_001",
               "title_ko": "휴대폰 주소변경 / MNP / 해약·단말 잔액 확인",
               "title_ja": "携帯電話の住所変更・MNP・解約と端末残債の確認",
               "description_ko": "등록 주소를 변경하거나 통신사를 바꾸려면 MNP(번호이동)로 전출 후 신규 가입합니다. MNP 예약번호 유효기간은 통상 15일, 본인확인에 재류카드 등이 필요(등록정보와 일치). 단말 분할대금(残債)이 남아 있으면 해약·MNP 후에도 잔액 지불이 계속됩니다.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["통신", "금전"], "risk_level": "money_loss",
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "통신",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "MNP/해약 시 주의(단말 잔액 등)", "url": "https://www.softbank.jp/mobile/support/cancellation/mnp/notification/", "publisher": "ソフトバンク", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "MNP/해약 시 주의(단말 잔액 등)",
+                  "url": "https://www.softbank.jp/mobile/support/cancellation/mnp/notification/",
+                  "publisher": "ソフトバンク",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_telecom_nhk_001",
               "title_ko": "NHK 수신계약 주소 변경 또는 해약",
               "title_ja": "NHK受信契約の住所変更・解約",
               "description_ko": "수신계약이 있고 같은 세대로 이사하면 'NHK수신료 창구'에서 주소 변경을 신청합니다(이사 1~2주 전 권장). 세대 분리/통합 시 신규계약 또는 세대동거 수속이, 수상기 폐기 등 해약 사유가 있으면 별도 해약 절차가 필요합니다.",
-              "timeline": "D-7", "timeline_offset_days": -7,
-              "tags": ["통신"], "risk_level": "convenience",
+              "timeline": "D-7",
+              "timeline_offset_days": -7,
+              "tags": [
+                "통신"
+              ],
+              "risk_level": "convenience",
               "visible_when": {},
               "sources": [
-                { "label_ko": "이사 시 수속(주소 변경)", "url": "https://www.nhk-cs.jp/contract-change/address-change/", "publisher": "NHK", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "이사 시 수속(주소 변경)",
+                  "url": "https://www.nhk-cs.jp/contract-change/address-change/",
+                  "publisher": "NHK",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -673,21 +1552,45 @@
           "id": "cat_admin_license",
           "label_ko": "운전면허",
           "label_ja": "運転免許",
-          "visible_when": { "any_of": ["has_drivers_license"] },
+          "visible_when": {
+            "any_of": [
+              "has_drivers_license"
+            ]
+          },
           "items": [
             {
               "id": "ad_license_addr_001",
               "title_ko": "운전면허증 기재사항(주소) 변경",
               "title_ja": "運転免許証の記載事項変更（住所）",
               "description_ko": "이사 후 신주소 관할 경찰서·운전면허센터·시험장에서 '기재사항 변경신고'를 합니다. 도로교통법 제94조상 '신속히(速やかに)' 신고 의무이며 명시적 일수 기한은 없으나 가급적 빨리 처리. 외국인은 재류카드 또는 신주소 주민표(6개월 이내 발급) 등을 지참. 미신고 시 도로교통법상 2만엔 이하 벌금·과료 대상.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["면허"], "risk_level": "service_interruption",
-              "visible_when": { "any_of": ["moving"] },
-              "sources": [
-                { "label_ko": "기재사항 변경(주소·성명·본적)", "url": "https://www.keishicho.metro.tokyo.lg.jp/menkyo/koshin/kisai00.html", "publisher": "警視庁", "last_verified": "2026-05-29" },
-                { "label_ko": "道路交通法 제94조 (e-Gov)", "url": "https://laws.e-gov.go.jp/law/335AC0000000105", "publisher": "e-Gov法令検索", "last_verified": "2026-05-29" }
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "면허"
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "risk_level": "service_interruption",
+              "visible_when": {
+                "any_of": [
+                  "moving"
+                ]
+              },
+              "sources": [
+                {
+                  "label_ko": "기재사항 변경(주소·성명·본적)",
+                  "url": "https://www.keishicho.metro.tokyo.lg.jp/menkyo/koshin/kisai00.html",
+                  "publisher": "警視庁",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "道路交通法 제94조 (e-Gov)",
+                  "url": "https://laws.e-gov.go.jp/law/335AC0000000105",
+                  "publisher": "e-Gov法令検索",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -695,48 +1598,99 @@
           "id": "cat_admin_car",
           "label_ko": "자동차",
           "label_ja": "自動車",
-          "visible_when": { "any_of": ["has_car"] },
+          "visible_when": {
+            "any_of": [
+              "has_car"
+            ]
+          },
           "items": [
             {
               "id": "ad_car_shako_001",
               "title_ko": "차고증명·보관장소 변경 신고 — 변경 후 15일 이내",
               "title_ja": "車庫証明・保管場所変更の届出（15日以内）",
               "description_ko": "이사로 보관장소가 바뀌면 관할 경찰서에 신고합니다. 「자동차 보관장소 확보 등에 관한 법률」 제7조상 변경일로부터 15일 이내 신고이며, 차검증 주소변경(변경등록)에 앞서 새 차고증명이 필요합니다. 교부에 3~7일 소요되니 조기 신청. 경자동차는 차고증명 불요이나 일부 지역은 보관장소 신고 필요.",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["자동차", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "자동차",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "보관장소 수속이란 (경시청)", "url": "https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/hokan/syako_syousai/tetsuzuki.html", "publisher": "警視庁", "last_verified": "2026-05-29" },
-                { "label_ko": "자동차 보관장소 확보법 제7조 (e-Gov)", "url": "https://laws.e-gov.go.jp/law/337AC0000000145/", "publisher": "e-Gov法令検索", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "보관장소 수속이란 (경시청)",
+                  "url": "https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/hokan/syako_syousai/tetsuzuki.html",
+                  "publisher": "警視庁",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "자동차 보관장소 확보법 제7조 (e-Gov)",
+                  "url": "https://laws.e-gov.go.jp/law/337AC0000000145/",
+                  "publisher": "e-Gov法令検索",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_car_shaken_001",
               "title_ko": "차검증(자동차검사증) 주소 변경 — 변경 후 15일 이내",
               "title_ja": "車検証の住所変更（変更登録・15日以内）",
               "description_ko": "보통자동차 소유자는 주소 변경 사유 발생일로부터 15일 이내에 관할 운수지국에서 변경등록을 신청해야 합니다(道路運送車両法 제12조). 필요서류: 차검증·신청서·수수료납부서·주민표·새 차고증명. 미신고 시 동법 제109조에 따라 50만엔 이하 벌금. 경자동차는 경자동차검사협회에서 신고.",
-              "timeline": "D+14", "timeline_offset_days": 15,
-              "tags": ["자동차", "기한"], "risk_level": "legal_deadline",
+              "timeline": "D+14",
+              "timeline_offset_days": 15,
+              "tags": [
+                "자동차",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
               "visible_when": {},
               "sources": [
-                { "label_ko": "道路運送車両法 제12조 (e-Gov)", "url": "https://laws.e-gov.go.jp/law/326AC0000000185", "publisher": "e-Gov法令検索", "last_verified": "2026-05-29" },
-                { "label_ko": "차검증 주소·성명 변경 필요서류", "url": "https://www.jidoushatouroku-portal.mlit.go.jp/jidousha/kensatoroku/change/document/index.html", "publisher": "国土交通省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "道路運送車両法 제12조 (e-Gov)",
+                  "url": "https://laws.e-gov.go.jp/law/326AC0000000185",
+                  "publisher": "e-Gov法令検索",
+                  "last_verified": "2026-05-29"
+                },
+                {
+                  "label_ko": "차검증 주소·성명 변경 필요서류",
+                  "url": "https://www.jidoushatouroku-portal.mlit.go.jp/jidousha/kensatoroku/change/document/index.html",
+                  "publisher": "国土交通省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             },
             {
               "id": "ad_car_tax_001",
               "title_ko": "자동차세 납세 주소 반영 확인",
               "title_ja": "自動車税の住所登録（反映確認）",
               "description_ko": "차검증 변경등록(주소변경)을 마치면 도도부현 세무사무소의 자동차세 납세통지서가 새 주소로 도달합니다. 변경등록을 안 하면 통지서가 구 주소로 발송돼 미납·연체 위험이 있으니, 차검증 주소변경으로 세 등록 주소가 갱신됐는지 확인하세요(별도 직접 신청은 통상 불요).",
-              "timeline": "D+30", "timeline_offset_days": 30,
-              "tags": ["자동차", "세금", "금전"], "risk_level": "money_loss",
+              "timeline": "D+30",
+              "timeline_offset_days": 30,
+              "tags": [
+                "자동차",
+                "세금",
+                "금전"
+              ],
+              "risk_level": "money_loss",
               "visible_when": {},
               "sources": [
-                { "label_ko": "차검증 주소 변경(자동차세 연동)", "url": "https://www.jidoushatouroku-portal.mlit.go.jp/jidousha/kensatoroku/change/document/index.html", "publisher": "国土交通省", "last_verified": "2026-05-29" }
+                {
+                  "label_ko": "차검증 주소 변경(자동차세 연동)",
+                  "url": "https://www.jidoushatouroku-portal.mlit.go.jp/jidousha/kensatoroku/change/document/index.html",
+                  "publisher": "国土交通省",
+                  "last_verified": "2026-05-29"
+                }
               ],
-              "last_verified": "2026-05-29", "needs_verification": false, "links": []
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
             }
           ]
         },
@@ -744,31 +1698,59 @@
           "id": "cat_admin_family",
           "label_ko": "자녀·배우자",
           "label_ja": "子ども・配偶者",
-          "visible_when": { "any_of": ["has_kids", "has_spouse"] },
+          "visible_when": {
+            "any_of": [
+              "has_kids",
+              "has_spouse"
+            ]
+          },
           "items": [
             {
               "id": "ad_family_hoiku_001",
               "title_ko": "자녀 보육원/유치원 전입 절차 (핵심)",
               "title_ja": "子の保育園・幼稚園の転入手続き（コア）",
               "description_ko": "다른 시구정촌 이사 시 인가보육원은 새 시구정촌 입소 신청(이용조정)이 필요하며 빈자리에 따라 대기가 생길 수 있어 조기 상담 권장. 유치원은 직접 모집/시구정촌 안내. (상세는 v1.5로 이연)",
-              "timeline": "D-30", "timeline_offset_days": -30,
-              "tags": ["자녀"], "risk_level": "convenience",
-              "visible_when": { "any_of": ["has_kids"] },
-              "sources": [], "last_verified": "2026-05-29", "needs_verification": true, "links": []
+              "timeline": "D-30",
+              "timeline_offset_days": -30,
+              "tags": [
+                "자녀"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {
+                "any_of": [
+                  "has_kids"
+                ]
+              },
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": true,
+              "links": []
             },
             {
               "id": "ad_family_school_001",
               "title_ko": "자녀 공립 초·중학교 전입학 절차 (핵심)",
               "title_ja": "子の公立小・中学校の転入学手続き（コア）",
               "description_ko": "전입신고 시 시구정촌 창구에서 '취학통지서' 등을 받고, 구 학교에서 받은 '재학증명서·교과서급여증명서'를 신주소 지정 학교/교육위원회에 제출합니다. 외국적 자녀도 취학 희망 시 공립학교 취학이 가능하니 교육위원회에 상담. (상세는 v1.5로 이연)",
-              "timeline": "D+7", "timeline_offset_days": 7,
-              "tags": ["자녀"], "risk_level": "convenience",
-              "visible_when": { "any_of": ["has_kids"] },
-              "sources": [], "last_verified": "2026-05-29", "needs_verification": true, "links": []
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": [
+                "자녀"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {
+                "any_of": [
+                  "has_kids"
+                ]
+              },
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": true,
+              "links": []
             }
           ]
         }
-      ]
+      ],
+      "anchor": "move"
     }
   ]
 }

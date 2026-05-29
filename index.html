@@ -7,7 +7,7 @@
         content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>Japan Life Checklist</title>
-  <link rel="stylesheet" href="./css/custom.css?v=2026-05-29">
+  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
@@ -35,6 +35,18 @@
     </section>
 
     <section id="toolbar" aria-label="보기·필터" class="jlc-toolbar no-print">
+      <div class="jlc-toolbar-row">
+        <label class="jlc-toolbar-label" for="anchor-move">📅 이사 예정일</label>
+        <input id="anchor-move" type="date" class="jlc-date" aria-label="이사 예정일">
+        <label class="jlc-toolbar-label" for="anchor-job">퇴직(이직)일</label>
+        <input id="anchor-job" type="date" class="jlc-date" aria-label="퇴직일">
+        <span class="jlc-toolbar-hint">날짜를 넣으면 D-Day가 실제 날짜로 계산됩니다</span>
+      </div>
+      <div class="jlc-toolbar-row">
+        <label class="jlc-toolbar-label" for="region-select">🗾 거주 지역</label>
+        <select id="region-select" class="jlc-select" aria-label="거주 도도부현"></select>
+        <span class="jlc-toolbar-hint">대형쓰레기·役所 등 지역별 안내에 반영</span>
+      </div>
       <div class="jlc-toolbar-row" role="group" aria-label="보기 모드">
         <span class="jlc-toolbar-label">보기</span>
         <button id="view-domain" type="button" class="jlc-seg jlc-seg-on" aria-pressed="true">도메인별</button>
@@ -74,6 +86,6 @@
     <div id="banner-region" aria-live="polite" class="mt-4"></div>
   </main>
 
-  <script type="module" src="./js/app.js?v=2026-05-29"></script>
+  <script type="module" src="./js/app.js?v=2026-05-30"></script>
 </body>
 </html>

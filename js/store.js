@@ -10,6 +10,8 @@ export const KEYS = {
   checked:       'jlc:checked',
   notes:         'jlc:notes',
   view:          'jlc:view',
+  anchors:       'jlc:anchors',
+  region:        'jlc:region',
   orphan:        'jlc:orphan',
 };
 
@@ -94,6 +96,19 @@ export function setNote(itemId, text) {
   return safeSet(KEYS.notes, notes);
 }
 
+// ── 기준일(anchors) ──────────────────────────────────────
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+export function getAnchors() { return { move: null, job: null, ...(safeGet(KEYS.anchors, {}) || {}) }; }
+export function setAnchor(type, date) {
+  const a = getAnchors();
+  a[type] = (date && DATE_RE.test(date)) ? date : null;
+  return safeSet(KEYS.anchors, a);
+}
+
+// ── 지역(region) ─────────────────────────────────────────
+export function getRegion(fallback = 'tokyo') { return safeGet(KEYS.region, fallback) || fallback; }
+export function setRegion(id) { return safeSet(KEYS.region, id); }
+
 // ── view 상태 ────────────────────────────────────────────
 const DEFAULT_VIEW = { mode: 'domain', status: 'all', risk: 'all', search: '' };
 export function getView() { return { ...DEFAULT_VIEW, ...(safeGet(KEYS.view, {}) || {}) }; }
@@ -112,6 +127,8 @@ export function exportData() {
     checked: getChecked(),
     notes: getNotes(),
     view: getView(),
+    anchors: getAnchors(),
+    region: getRegion(),
   };
 }
 
@@ -120,7 +137,7 @@ const MAX_NOTE_BYTES   = 10 * 1024;       // 10KB/항목
 const MAX_NOTES_TOTAL  = 500 * 1024;      // 500KB
 
 // rawText: 파일 텍스트. knownItemIds: Set, knownFlags: Set. appSchemaVersion: number.
-export function importData(rawText, { knownItemIds, knownFlags, appSchemaVersion }) {
+export function importData(rawText, { knownItemIds, knownFlags, knownRegions, appSchemaVersion }) {
   const errors = [];
   if (typeof rawText !== 'string') return { ok: false, errors: ['텍스트 아님'] };
   if (rawText.length > MAX_IMPORT_BYTES) return { ok: false, errors: ['파일이 너무 큽니다(1MB 초과)'] };
@@ -167,10 +184,26 @@ export function importData(rawText, { knownItemIds, knownFlags, appSchemaVersion
     }
   }
 
+  // anchors: 날짜 형식만 통과
+  const anchors = {};
+  if (obj.anchors && typeof obj.anchors === 'object') {
+    for (const t of ['move', 'job']) {
+      const v = obj.anchors[t];
+      anchors[t] = (typeof v === 'string' && DATE_RE.test(v)) ? v : null;
+    }
+  }
+  // region: 알려진 region id만 (knownRegions 미전달 시 문자열만 통과)
+  let region;
+  if (typeof obj.region === 'string') {
+    region = (knownRegions && !knownRegions.has(obj.region)) ? undefined : obj.region;
+  }
+
   // 적용
   safeSet(KEYS.profile, profile);
   safeSet(KEYS.checked, checked);
   safeSet(KEYS.notes, notes);
+  safeSet(KEYS.anchors, anchors);
+  if (region !== undefined) safeSet(KEYS.region, region);
   const orphanCount = Object.keys(orphanChecked).length + Object.keys(orphanNotes).length;
   if (orphanCount > 0) safeSet(KEYS.orphan, { checked: orphanChecked, notes: orphanNotes });
 

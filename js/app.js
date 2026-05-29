@@ -1,17 +1,18 @@
 // app.js — 부트스트랩 + 이벤트 배선. Stop #1~#3 구현.
 
-// NOTE: 모든 모듈 import에 ?v=<data_version> 쿼리를 부착(캐시 버스팅).
-// 콘텐츠/코드 release 시 index.html·app.js·filter.js의 버전 문자열을 함께 올린다.
+// NOTE: 모든 모듈 import에 ?v=<버전> 쿼리를 부착(캐시 버스팅).
+// 코드/콘텐츠 release 시 index.html·app.js·filter.js의 버전 문자열을 함께 올린다.
 import {
   isStorageAvailable, getProfile, setProfileFlag, setProfileAll,
   getChecked, setChecked, getNotes, setNote, getView, setView,
+  getAnchors, setAnchor, getRegion, setRegion,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-29';
-import { validateRuntime } from './validate.js?v=2026-05-29';
+} from './store.js?v=2026-05-30';
+import { validateRuntime } from './validate.js?v=2026-05-30';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-29';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-29';
+} from './filter.js?v=2026-05-30';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -20,8 +21,14 @@ const $ = (id) => document.getElementById(id);
 const state = {
   data: null, profile: {}, checked: {}, notes: {},
   view: { mode: 'domain', status: 'all', risk: 'all', search: '' },
+  anchors: { move: null, job: null }, region: 'tokyo',
   index: null, today: new Date(),
 };
+
+function regionLabel(id) {
+  const r = (state.data.regions || []).find(x => x.id === id);
+  return r ? r.label_ko : id;
+}
 
 function banner(msg, kind = 'info') {
   const b = $('banner-region');
@@ -69,7 +76,9 @@ function rerenderList() {
 
   renderChecklist($('categories-root'), {
     entries, mode: state.view.mode, checked: state.checked, notes: state.notes,
-    today: state.today, onCheck, onNote: onNoteDebounced, emptyReason,
+    today: state.today, anchors: state.anchors, region: state.region,
+    regionResources: state.data.region_resources || {}, regionLabel: regionLabel(state.region),
+    onCheck, onNote: onNoteDebounced, emptyReason,
   });
 
   const rc = $('result-count');
@@ -128,11 +137,13 @@ function doImport(file) {
   reader.onload = () => {
     const knownItemIds = new Set(profileVisibleAllIds());
     const knownFlags = new Set(state.data.profile_flags.map(f => f.id));
-    const res = importData(String(reader.result), { knownItemIds, knownFlags, appSchemaVersion: APP_SCHEMA_VERSION });
+    const knownRegions = new Set((state.data.regions || []).map(r => r.id));
+    const res = importData(String(reader.result), { knownItemIds, knownFlags, knownRegions, appSchemaVersion: APP_SCHEMA_VERSION });
     if (!res.ok) { banner(`가져오기 실패: ${res.errors.join(', ')}`, 'error'); return; }
     state.profile = getProfile(); state.checked = getChecked(); state.notes = getNotes();
+    state.anchors = getAnchors(); state.region = getRegion();
     renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
-    rerenderList(); refreshProgress();
+    populateRegions(); syncControlsFromView(); refreshProgress();
     const extra = res.orphanCount ? ` (소속 잃은 기록 ${res.orphanCount}개 보관)` : '';
     const warn = res.errors.length ? ` · ${res.errors.join(', ')}` : '';
     banner(`가져오기 완료${extra}${warn}`, res.errors.length ? 'warn' : 'info');
@@ -155,7 +166,9 @@ function doReset() {
   clearAll();
   state.profile = {}; state.checked = {}; state.notes = {};
   state.view = { mode: 'domain', status: 'all', risk: 'all', search: '' };
+  state.anchors = { move: null, job: null }; state.region = 'tokyo';
   $('filter-status').value = 'all'; $('filter-risk').value = 'all'; $('search-input').value = '';
+  $('anchor-move').value = ''; $('anchor-job').value = ''; $('region-select').value = 'tokyo';
   setMode('domain');
   renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
   rerenderList(); refreshProgress();
@@ -177,12 +190,30 @@ function wireControls() {
   $('btn-export').addEventListener('click', doExport);
   $('import-file').addEventListener('change', (e) => { if (e.target.files[0]) doImport(e.target.files[0]); e.target.value = ''; });
   $('btn-reset').addEventListener('click', doReset);
+  // 기준일
+  $('anchor-move').addEventListener('change', (e) => { state.anchors.move = e.target.value || null; setAnchor('move', e.target.value); rerenderList(); });
+  $('anchor-job').addEventListener('change', (e) => { state.anchors.job = e.target.value || null; setAnchor('job', e.target.value); rerenderList(); });
+  // 지역
+  $('region-select').addEventListener('change', (e) => { state.region = e.target.value; setRegion(e.target.value); rerenderList(); });
+}
+
+function populateRegions() {
+  const sel = $('region-select');
+  sel.textContent = '';
+  for (const r of state.data.regions || []) {
+    const o = document.createElement('option');
+    o.value = r.id; o.textContent = `${r.label_ko} / ${r.label_ja}`;
+    sel.appendChild(o);
+  }
+  sel.value = state.region;
 }
 
 function syncControlsFromView() {
   $('filter-status').value = state.view.status;
   $('filter-risk').value = state.view.risk;
   $('search-input').value = state.view.search || '';
+  $('anchor-move').value = state.anchors.move || '';
+  $('anchor-job').value = state.anchors.job || '';
   setMode(state.view.mode);
 }
 
@@ -221,6 +252,8 @@ async function boot() {
   state.checked = getChecked();
   state.notes = getNotes();
   state.view = getView();
+  state.anchors = getAnchors();
+  state.region = getRegion();
 
   if ($('data-version-display')) {
     $('data-version-display').textContent = `데이터 기준일: ${data.data_version} · schema v${data.schema_version}`;
@@ -228,6 +261,7 @@ async function boot() {
 
   renderProfile($('profile-flags'), data.profile_flags, state.profile, onToggle);
   wireControls();
+  populateRegions();
   syncControlsFromView();   // setMode 내부에서 rerenderList 호출
   refreshProgress();
 
