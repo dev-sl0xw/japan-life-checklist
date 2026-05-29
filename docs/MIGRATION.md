@@ -2,7 +2,7 @@
 
 `jlc:schema_version`이 변경될 때 사용자 localStorage 데이터를 안전하게 이행하기 위한 가이드입니다.
 
-> 🚧 스캐폴딩(Stop #0) 단계 — 본격 마이그레이션 코드는 Stop #1 이후 추가됩니다.
+> 캐시 버스팅: 코드/콘텐츠 release 시 `index.html`·`js/app.js`·`js/filter.js`의 `?v=<data_version>` 쿼리 문자열을 함께 올려야 사용자 브라우저가 옛 모듈을 캐시한 채 깨지지 않습니다. (전 모듈 import 간선에 부착되어 있음)
 
 ## 트리거
 
