@@ -7,7 +7,7 @@
     { "id": "moving",                            "label_ko": "이사 진행 중",                "label_ja": "引っ越し中" },
     { "id": "jobchange",                         "label_ko": "이직 진행 중",                "label_ja": "転職中" },
     { "id": "has_job_gap",                       "label_ko": "퇴직~입사 사이 공백 있음",    "label_ja": "退職と入社の間に空白あり" },
-    { "id": "has_company_dc_or_ideco",           "label_ko": "企業型DC 또는 iDeCo 가입",    "label_ja": "企業型DC・iDeCo加入" },
+    { "id": "has_company_dc_or_ideco",           "label_ko": "기업형 DC 또는 iDeCo 가입",    "label_ja": "企業型DC・iDeCo加入" },
     { "id": "has_side_income_or_freelance",      "label_ko": "부업/프리랜서 소득 있음",     "label_ja": "副業・フリーランス収入あり" },
     { "id": "spouse_dependent_or_dependent_visa","label_ko": "배우자 부양 또는 가족체류비자","label_ja": "配偶者扶養または家族滞在ビザ" },
     { "id": "leaving_japan_or_overseas_move",    "label_ko": "영구 귀국/제3국 이동 가능성", "label_ja": "永久帰国・第三国移動の可能性" },
@@ -43,7 +43,7 @@
             },
             {
               "id": "mv_decide_cancel_notice_001",
-              "title_ko": "현재 집 해약 통지 (解約通知)",
+              "title_ko": "현재 집 해약 통지",
               "title_ja": "現賃貸物件の解約通知",
               "description_ko": "해약 통지는 보통 퇴거 1개월 전(계약서에 따라 2개월 전)까지 집주인·관리회사에 해야 합니다. 늦으면 그만큼 월세를 더 내므로 계약서의 통지 기간(予告期間)을 반드시 확인하세요.",
               "timeline": "D-45", "timeline_offset_days": -45,
@@ -103,7 +103,7 @@
             },
             {
               "id": "mv_prep_mail_forward_001",
-              "title_ko": "우편물 전송 신청 (転居・転送サービス)",
+              "title_ko": "우편물 전송 신청",
               "title_ja": "郵便物の転送サービス（e転居）",
               "description_ko": "일본우편의 전거·전송 서비스를 신청하면 옛 주소로 온 우편물을 1년간 새 주소로 무료 전송합니다. 온라인(e転居)으로도 신청할 수 있습니다.",
               "timeline": "D-7", "timeline_offset_days": -7,
@@ -186,7 +186,7 @@
           "items": [
             {
               "id": "jc_offer_visa_fit_001",
-              "title_ko": "오퍼 직무와 재류자격(在留資格) 적합성 확인",
+              "title_ko": "오퍼 직무와 재류자격 적합성 확인",
               "title_ja": "オファー内容と在留資格の適合性を確認",
               "description_ko": "새 회사 업무가 현 재류자격(예: 技術・人文知識・国際業務)의 활동 범위에 맞는지 확인하세요. 직종이 크게 달라지면 별도 허가가 필요할 수 있습니다.",
               "timeline": "D-30", "timeline_offset_days": -30,
@@ -199,7 +199,7 @@
             },
             {
               "id": "jc_offer_work_cert_001",
-              "title_ko": "취로자격증명서(就労資格証明書) 발급으로 적법성 사전 확인",
+              "title_ko": "취로자격증명서 발급으로 적법성 사전 확인",
               "title_ja": "就労資格証明書で就労可否を事前確認",
               "description_ko": "새 직장 업무가 현 재류자격으로 적법한지 입관이 증명해 주는 서류입니다(수수료 1,200엔). 의무는 아니나 직무가 바뀌는 전직이면 갱신 거부 리스크를 줄여 줍니다.",
               "timeline": "D-14", "timeline_offset_days": -14,
@@ -219,7 +219,7 @@
           "items": [
             {
               "id": "jc_resign_notice_001",
-              "title_ko": "퇴직 의사 통지 (退職通知)",
+              "title_ko": "퇴직 의사 통지",
               "title_ja": "退職の意思表示（退職通知）",
               "description_ko": "취업규칙에 정해진 통지 시기(통상 1~2개월 전)를 확인해 사직서를 제출합니다. 기간의 정함 없는 고용은 민법상 신청 후 2주 경과로 종료 가능하나, 인수인계를 위해 회사 규정 시기를 따르는 것이 안전합니다.",
               "timeline": "D-30", "timeline_offset_days": -30,
@@ -241,7 +241,7 @@
             },
             {
               "id": "jc_resign_gensen_001",
-              "title_ko": "원천징수표(源泉徴収票) 수령",
+              "title_ko": "원천징수표 수령",
               "title_ja": "源泉徴収票を受け取る",
               "description_ko": "그 해 급여·원천징수 내역이 든 源泉徴収票를 받으세요. 같은 해 안에 전직하면 새 회사에 제출해야 연말정산(年末調整)이 됩니다. 통상 퇴직 후 1개월 이내 교부(소득세법상 의무).",
               "timeline": "D+30", "timeline_offset_days": 30,
@@ -254,7 +254,7 @@
             },
             {
               "id": "jc_resign_koyou_hihokensha_001",
-              "title_ko": "고용보험 피보험자증(雇用保険被保険者証) 수령",
+              "title_ko": "고용보험 피보험자증 수령",
               "title_ja": "雇用保険被保険者証を受け取る",
               "description_ko": "고용보험 피보험자번호는 평생 이어지는 번호로, 전직 후 새 회사 가입에 사용합니다. 회사 보관분을 받아 새 회사에 제출하세요.",
               "timeline": "D-Day", "timeline_offset_days": 0,
@@ -267,7 +267,7 @@
             },
             {
               "id": "jc_resign_rishokuhyo_001",
-              "title_ko": "이직표(離職票) 수령 — 실업급여 신청 시 필수",
+              "title_ko": "이직표 수령 — 실업급여 신청 시 필수",
               "title_ja": "離職票を受け取る（失業給付に必要）",
               "description_ko": "離職票는 실업급여(基本手当) 신청 시 헬로워크에 내는 서류입니다. 즉시 전직이 확정이면 불요하나, 공백기가 생기거나 입사일 미정이면 반드시 받아두세요. 통상 퇴직 후 10일~2주 내 발행.",
               "timeline": "D+14", "timeline_offset_days": 10,
@@ -280,7 +280,7 @@
             },
             {
               "id": "jc_resign_nenkin_no_001",
-              "title_ko": "기초연금번호 통지서(年金手帳) 확인",
+              "title_ko": "기초연금번호 통지서 확인",
               "title_ja": "基礎年金番号通知書（年金手帳）を確認",
               "description_ko": "새 회사 후생연금 가입에 기초연금번호가 필요합니다. 회사 보관분을 돌려받거나 번호를 확인해 새 회사에 알려주세요.",
               "timeline": "D-Day", "timeline_offset_days": 0,
@@ -293,7 +293,7 @@
             },
             {
               "id": "jc_resign_taishoku_shotoku_001",
-              "title_ko": "퇴직금 있으면 退職所得의 수급에 관한 신고서 제출",
+              "title_ko": "퇴직금 있으면 퇴직소득 수급에 관한 신고서 제출",
               "title_ja": "退職金があれば「退職所得の受給に関する申告書」を提出",
               "description_ko": "퇴직금을 받는다면 이 신고서를 회사에 제출하세요. 미제출 시 퇴직금 전액에 일률 20.42% 원천징수가 적용되어 退職所得控除를 못 받습니다(추후 확정신고로 환급은 가능하나 번거로움).",
               "timeline": "D-Day", "timeline_offset_days": 0,
@@ -307,7 +307,7 @@
             },
             {
               "id": "jc_resign_juminzei_method_001",
-              "title_ko": "주민세(住民税) 징수 방식 확인 (일괄/보통징수)",
+              "title_ko": "주민세 징수 방식 확인 (일괄/보통징수)",
               "title_ja": "住民税の徴収方法を確認（一括/普通徴収）",
               "description_ko": "주민세는 전년 소득 기준으로 6월~다음해 5월에 부과됩니다. 1~5월 퇴직 시 미징수분은 원칙적으로 최종급여·퇴직금에서 일괄징수, 6~12월 퇴직 시 일괄 또는 보통징수(본인 납부) 중 선택 가능하므로 회사에 의사를 전달하세요.",
               "timeline": "D-Day", "timeline_offset_days": 0,
@@ -328,7 +328,7 @@
           "items": [
             {
               "id": "jc_gap_ninikeizoku_001",
-              "title_ko": "건강보험 任意継続 신청 — 자격상실일로부터 20일 이내",
+              "title_ko": "건강보험 임의계속 신청 — 자격상실일로부터 20일 이내",
               "title_ja": "健康保険の任意継続を申請（資格喪失日から20日以内）",
               "description_ko": "공백기 건강보험 유지 방법. 퇴직 전 피보험자기간이 연속 2개월 이상이어야 하며, 신청 기한은 자격상실일(퇴직 다음 날)로부터 20일 이내입니다. 1일이라도 넘기면 원칙적으로 가입 불가하므로 전자신청 권장. 최장 2년, 보험료 본인 전액 부담.",
               "timeline": "D+14", "timeline_offset_days": 20,
@@ -342,7 +342,7 @@
             },
             {
               "id": "jc_gap_kokuho_001",
-              "title_ko": "국민건강보험(国民健康保険) 가입 — 임의계속 대신 선택 시",
+              "title_ko": "국민건강보험 가입 — 임의계속 대신 선택 시",
               "title_ja": "国民健康保険に加入（任意継続を選ばない場合）",
               "description_ko": "임의계속 대신 시구정촌 국민건강보험에 가입할 수도 있습니다. 퇴직(피용자보험 상실)일로부터 14일 이내 시구정촌 신고가 원칙. 보험료는 전년 소득 기준이므로 임의계속과 비교해 유리한 쪽을 선택하세요.",
               "timeline": "D+14", "timeline_offset_days": 14,
@@ -369,7 +369,7 @@
             },
             {
               "id": "jc_gap_hellowork_001",
-              "title_ko": "헬로워크 구직신청·실업급여(基本手当) 수급자격 신청",
+              "title_ko": "헬로워크 구직신청·실업급여 수급자격 신청",
               "title_ja": "ハローワークで求職申込・基本手当の受給資格決定",
               "description_ko": "거주지 관할 헬로워크에 離職票·본인확인서류·통장을 지참해 구직신청합니다. 신청 후 7일 대기, 자기사정 퇴직은 2025년 4월 개정으로 급여제한이 원칙 1개월로 단축(5년 내 2회 이상 자기사정 퇴직 시 3개월). 빨리 신청할수록 수급 개시가 빠릅니다.",
               "timeline": "D+7", "timeline_offset_days": 7,
@@ -382,7 +382,7 @@
             },
             {
               "id": "jc_gap_dc_ideco_001",
-              "title_ko": "企業型DC/iDeCo 이환(移換) — 자격상실 다음 달부터 6개월 이내",
+              "title_ko": "기업형 DC/iDeCo 이환 — 자격상실 다음 달부터 6개월 이내",
               "title_ja": "企業型DC/iDeCoの移換（資格喪失翌月から6か月以内）",
               "description_ko": "企業型DC 가입자였다면 자격상실 다음 달부터 6개월 이내에 이환해야 합니다. 새 회사 企業型DC가 있으면 그쪽으로, 없으면 iDeCo로. 6개월 내 미처리 시 국민연금기금연합회로 '자동이환'되어 ①현금으로 묶여 운용 불가 ②관리수수료만 차감 ③수급 개시가 늦어질 수 있습니다.",
               "timeline": "D+90", "timeline_offset_days": 180,
@@ -454,7 +454,7 @@
             },
             {
               "id": "jc_join_juminzei_special_001",
-              "title_ko": "주민세 특별징수 재개 (給与所得者異動届出書)",
+              "title_ko": "주민세 특별징수 재개",
               "title_ja": "住民税の特別徴収を再開（給与所得者異動届出書）",
               "description_ko": "공백기에 보통징수로 바꿨던 주민세를 새 회사 급여 천공(특별징수)으로 되돌리려면 새 회사를 통해 '급여소득자 이동신고서'를 시구정촌에 제출합니다. 본인은 새 회사에 특별징수 희망 의사를 전달하면 됩니다.",
               "timeline": "D+1", "timeline_offset_days": 1,
@@ -537,13 +537,13 @@
         },
         {
           "id": "cat_admin_juminhyo",
-          "label_ko": "마이넘버·住民票",
+          "label_ko": "마이넘버·주민표",
           "label_ja": "マイナンバー・住民票",
           "visible_when": { "any_of": ["moving"] },
           "items": [
             {
               "id": "ad_jmh_tenshutsu_001",
-              "title_ko": "전출신고 (転出届) — 구 주소지에서",
+              "title_ko": "전출신고 — 구 주소지에서",
               "title_ja": "転出届（旧住所の役所で）",
               "description_ko": "다른 시구정촌으로 이사 시, 이사 전~이사 후 14일 이내에 구 주소지에서 전출신고를 하고 전출증명서를 받습니다. 마이넘버카드가 있으면 특례전출(창구·온라인)로 증명서 발급을 생략할 수 있습니다. 같은 시구정촌 내 이사는 전거신고(転居届)만 합니다.",
               "timeline": "D-14", "timeline_offset_days": -10,
@@ -583,7 +583,7 @@
             },
             {
               "id": "ad_jmh_juminhyo_get_001",
-              "title_ko": "주민표(住民票) 발급·확인",
+              "title_ko": "주민표 발급·확인",
               "title_ja": "住民票の取得・確認",
               "description_ko": "전입신고 완료 후 새 주소가 기재된 주민표를 발급받아 두면 은행·통신·직장 등 각종 주소변경에 사용할 수 있습니다.",
               "timeline": "D+1", "timeline_offset_days": 2,
