@@ -5,14 +5,15 @@
 import {
   isStorageAvailable, getProfile, setProfileFlag, setProfileAll,
   getChecked, setChecked, getNotes, setNote, getView, setView,
-  getAnchors, setAnchor, getRegion, setRegion,
+  getAnchors, setAnchor, getRegion, setRegion, getLang, setLang,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30b';
-import { validateRuntime } from './validate.js?v=2026-05-30b';
+} from './store.js?v=2026-05-30c';
+import { validateRuntime } from './validate.js?v=2026-05-30c';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30b';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30b';
+} from './filter.js?v=2026-05-30c';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30c';
+import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30c';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -22,7 +23,7 @@ const state = {
   data: null, profile: {}, checked: {}, notes: {},
   view: { mode: 'domain', status: 'all', risk: 'all', search: '' },
   anchors: { move: null, job: null }, region: { pref: 'tokyo', city: null },
-  index: null, today: new Date(),
+  lang: 'ko', index: null, today: new Date(),
 };
 
 function prefEntry(pref) { return (state.data.regions || []).find(x => x.id === pref); }
@@ -69,33 +70,32 @@ function refreshProgress() {
   const total = vis.length;
   const done = vis.filter(({ item }) => state.checked[item.id] === true).length;
   const node = $('progress-display');
-  if (node) node.textContent = total === 0 ? '해당 항목 없음'
-    : `진행률 ${done} / ${total} (${Math.round((done / total) * 100)}%)`;
+  if (node) node.textContent = fmtProgress(state.lang, done, total);
 }
 
 function rerenderList() {
   const entries = filteredEntries();
   const totalVisible = profileVisible().length;
-  let emptyReason = '표시할 항목이 없습니다.';
-  if (totalVisible === 0) emptyReason = '위 「내 상황」에서 해당하는 항목을 켜 주세요.';
-  else if (entries.length === 0) emptyReason = '검색·필터 조건에 맞는 항목이 없습니다.';
+  let emptyReason = t(state.lang, 'empty.none');
+  if (totalVisible === 0) emptyReason = t(state.lang, 'empty.noProfile');
+  else if (entries.length === 0) emptyReason = t(state.lang, 'empty.noMatch');
 
   renderChecklist($('categories-root'), {
     entries, mode: state.view.mode, checked: state.checked, notes: state.notes,
     today: state.today, anchors: state.anchors, region: state.region,
     regionResources: state.data.region_resources || {}, regionLabel: regionLabel(state.region),
-    onCheck, onNote: onNoteDebounced, emptyReason,
+    lang: state.lang, onCheck, onNote: onNoteDebounced, emptyReason,
   });
 
   const rc = $('result-count');
-  if (rc) rc.textContent = totalVisible === 0 ? '' : `표시 ${entries.length}개 / 해당 ${totalVisible}개`;
+  if (rc) rc.textContent = totalVisible === 0 ? '' : fmtResultCount(state.lang, entries.length, totalVisible);
 }
 
 // ── 핸들러 ───────────────────────────────────────────────
 function onToggle(flagId, value) {
   state.profile[flagId] = value;
   setProfileFlag(flagId, value);
-  renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
+  renderProfile($('profile-flags'), state.data.profile_flags, state.profile, state.lang, onToggle);
   rerenderList();
   refreshProgress();
 }
@@ -111,7 +111,7 @@ function onCheck(itemId, value) {
 function onNote(itemId, value, summaryEl) {
   if (value && value.trim()) state.notes[itemId] = value; else delete state.notes[itemId];
   setNote(itemId, value);
-  if (summaryEl) summaryEl.textContent = (value && value.trim()) ? '📝 메모 (작성됨)' : '📝 메모';
+  if (summaryEl) summaryEl.textContent = (value && value.trim()) ? t(state.lang, 'card.memoDone') : t(state.lang, 'card.memo');
 }
 const onNoteDebounced = debounce(onNote, 200);
 
@@ -145,16 +145,18 @@ function doImport(file) {
     const knownFlags = new Set(state.data.profile_flags.map(f => f.id));
     const knownRegions = new Set((state.data.regions || []).map(r => r.id));
     const res = importData(String(reader.result), { knownItemIds, knownFlags, knownRegions, appSchemaVersion: APP_SCHEMA_VERSION });
-    if (!res.ok) { banner(`가져오기 실패: ${res.errors.join(', ')}`, 'error'); return; }
+    const ja = state.lang === 'ja';
+    if (!res.ok) { banner(`${ja ? 'インポート失敗' : '가져오기 실패'}: ${res.errors.join(', ')}`, 'error'); return; }
     state.profile = getProfile(); state.checked = getChecked(); state.notes = getNotes();
-    state.anchors = getAnchors(); state.region = getRegion();
-    renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
+    state.anchors = getAnchors(); state.region = getRegion(); state.lang = getLang();
+    applyStaticI18n(state.lang);
+    renderProfile($('profile-flags'), state.data.profile_flags, state.profile, state.lang, onToggle);
     populateRegions(); syncControlsFromView(); refreshProgress();
-    const extra = res.orphanCount ? ` (소속 잃은 기록 ${res.orphanCount}개 보관)` : '';
+    const extra = res.orphanCount ? (ja ? ` (孤立した記録 ${res.orphanCount}件を保管)` : ` (소속 잃은 기록 ${res.orphanCount}개 보관)`) : '';
     const warn = res.errors.length ? ` · ${res.errors.join(', ')}` : '';
-    banner(`가져오기 완료${extra}${warn}`, res.errors.length ? 'warn' : 'info');
+    banner(`${ja ? 'インポート完了' : '가져오기 완료'}${extra}${warn}`, res.errors.length ? 'warn' : 'info');
   };
-  reader.onerror = () => banner('파일을 읽을 수 없습니다.', 'error');
+  reader.onerror = () => banner(state.lang === 'ja' ? 'ファイルを読み込めません。' : '파일을 읽을 수 없습니다.', 'error');
   reader.readAsText(file);
 }
 
@@ -167,22 +169,66 @@ function profileVisibleAllIds() {
   return ids;
 }
 
+// 전체 초기화 — 진행상황 포함 모든 jlc:* 삭제 (언어는 보존)
 function doReset() {
-  if (!confirm('체크·메모·내 상황 설정을 모두 삭제합니다. 계속할까요? (이 작업은 되돌릴 수 없습니다)')) return;
+  if (!confirm(t(state.lang, 'reset.confirm'))) return;
+  const keepLang = state.lang;
   clearAll();
   state.profile = {}; state.checked = {}; state.notes = {};
   state.view = { mode: 'domain', status: 'all', risk: 'all', search: '' };
   state.anchors = { move: null, job: null }; state.region = { pref: 'tokyo', city: null };
+  state.lang = keepLang; setLang(keepLang);
+  resetSettingsControls();
+  renderProfile($('profile-flags'), state.data.profile_flags, state.profile, state.lang, onToggle);
+  rerenderList(); refreshProgress();
+  banner(t(state.lang, 'reset.done'), 'info');
+}
+
+// 표시 설정만 초기화 — 날짜·지역·필터·검색·보기 (진행상황·프로필·언어는 보존)
+function doSettingsReset() {
+  state.view = { mode: 'domain', status: 'all', risk: 'all', search: '' };
+  state.anchors = { move: null, job: null }; state.region = { pref: 'tokyo', city: null };
+  setView(state.view); setAnchor('move', ''); setAnchor('job', ''); setRegion(state.region);
+  resetSettingsControls();
+  refreshProgress();
+  banner(t(state.lang, 'settingsReset.done'), 'info');
+}
+
+function resetSettingsControls() {
   $('filter-status').value = 'all'; $('filter-risk').value = 'all'; $('search-input').value = '';
   $('anchor-move').value = ''; $('anchor-job').value = '';
   $('region-select').value = 'tokyo'; populateCities();
-  setMode('domain');
-  renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
+  setMode('domain');   // rerenderList 포함
+}
+
+// 정적 UI(헤더·툴바·옵션) 텍스트를 현재 언어로 적용
+function applyStaticI18n(lang) {
+  document.documentElement.lang = lang;
+  for (const node of document.querySelectorAll('[data-i18n]')) {
+    node.textContent = t(lang, node.getAttribute('data-i18n'));
+  }
+  for (const node of document.querySelectorAll('[data-i18n-ph]')) {
+    node.setAttribute('placeholder', t(lang, node.getAttribute('data-i18n-ph')));
+  }
+  const langBtn = $('btn-lang');
+  if (langBtn) { langBtn.textContent = t(lang, 'lang.toggle'); langBtn.setAttribute('aria-label', lang === 'ja' ? '한국어に切替' : '日本語로 전환'); }
+  if (state.data && $('data-version-display')) {
+    $('data-version-display').textContent = fmtDataAsOf(lang, state.data.data_version, state.data.schema_version);
+  }
+}
+
+function toggleLang() {
+  state.lang = state.lang === 'ko' ? 'ja' : 'ko';
+  setLang(state.lang);
+  applyStaticI18n(state.lang);
+  populateCities();                 // (구/시 전체) 라벨 갱신
+  renderProfile($('profile-flags'), state.data.profile_flags, state.profile, state.lang, onToggle);
   rerenderList(); refreshProgress();
-  banner('초기화되었습니다.', 'info');
 }
 
 function wireControls() {
+  $('btn-lang').addEventListener('click', toggleLang);
+  $('btn-settings-reset').addEventListener('click', doSettingsReset);
   $('view-domain').addEventListener('click', () => setMode('domain'));
   $('view-timeline').addEventListener('click', () => setMode('timeline'));
   $('filter-status').addEventListener('change', (e) => { state.view.status = e.target.value; setView({ status: e.target.value }); rerenderList(); });
@@ -191,7 +237,7 @@ function wireControls() {
   $('btn-profile-clear').addEventListener('click', () => {
     setProfileAll(state.data.profile_flags.map(f => f.id), false);
     state.profile = getProfile();
-    renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
+    renderProfile($('profile-flags'), state.data.profile_flags, state.profile, state.lang, onToggle);
     rerenderList(); refreshProgress();
   });
   $('btn-export').addEventListener('click', doExport);
@@ -232,7 +278,7 @@ function populateCities() {
   if (cities.length === 0) { sel.hidden = true; return; }
   sel.hidden = false;
   const none = document.createElement('option');
-  none.value = ''; none.textContent = '(구/시 전체)';
+  none.value = ''; none.textContent = t(state.lang, 'tb.cityAll');
   sel.appendChild(none);
   for (const c of cities) {
     const o = document.createElement('option');
@@ -252,8 +298,11 @@ function syncControlsFromView() {
 }
 
 async function boot() {
+  state.lang = getLang();
+  applyStaticI18n(state.lang);   // 데이터 로드 전이라도 정적 UI는 즉시 번역
+
   if (!isStorageAvailable()) {
-    banner('이 브라우저에서는 진행 상황이 저장되지 않습니다. 「내보내기」로 백업하세요.', 'warn');
+    banner(t(state.lang, 'banner.noStorage'), 'warn');
   }
 
   let data;
@@ -262,22 +311,22 @@ async function boot() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch (err) {
-    if ($('data-version-display')) $('data-version-display').textContent = `데이터 로드 실패: ${err.message}`;
-    banner('최신 데이터를 확인할 수 없습니다. 표시 내용이 오래되었을 수 있습니다.', 'warn');
+    if ($('data-version-display')) $('data-version-display').textContent = `data load failed: ${err.message}`;
+    banner(t(state.lang, 'banner.loadFail'), 'warn');
     console.error('[jlc] items.json load failed', err);
     return;
   }
 
   const errors = validateRuntime(data);
   if (errors.length > 0) {
-    if ($('data-version-display')) $('data-version-display').textContent = '데이터 검증 실패';
-    banner(`데이터 형식 오류: ${errors[0]}`, 'error');
+    if ($('data-version-display')) $('data-version-display').textContent = 'data validation failed';
+    banner(`data error: ${errors[0]}`, 'error');
     console.error('[jlc] validation errors', errors);
     return;
   }
 
   if (typeof data.schema_version === 'number' && data.schema_version > APP_SCHEMA_VERSION) {
-    banner('콘텐츠 스키마가 현재 앱보다 최신입니다. 페이지를 새로고침 해 주세요.', 'warn');
+    banner(t(state.lang, 'banner.schemaAhead'), 'warn');
   }
 
   state.data = data;
@@ -290,17 +339,17 @@ async function boot() {
   state.region = getRegion();
 
   if ($('data-version-display')) {
-    $('data-version-display').textContent = `데이터 기준일: ${data.data_version} · schema v${data.schema_version}`;
+    $('data-version-display').textContent = fmtDataAsOf(state.lang, data.data_version, data.schema_version);
   }
 
-  renderProfile($('profile-flags'), data.profile_flags, state.profile, onToggle);
+  renderProfile($('profile-flags'), data.profile_flags, state.profile, state.lang, onToggle);
   wireControls();
   populateRegions();
   syncControlsFromView();   // setMode 내부에서 rerenderList 호출
   refreshProgress();
 
   onCrossTabChange((key) => {
-    if (key === 'jlc:profile') { state.profile = getProfile(); renderProfile($('profile-flags'), data.profile_flags, state.profile, onToggle); rerenderList(); refreshProgress(); }
+    if (key === 'jlc:profile') { state.profile = getProfile(); renderProfile($('profile-flags'), data.profile_flags, state.profile, state.lang, onToggle); rerenderList(); refreshProgress(); }
     else if (key === 'jlc:checked') { state.checked = getChecked(); rerenderList(); refreshProgress(); }
     else if (key === 'jlc:notes') { state.notes = getNotes(); rerenderList(); }
   });

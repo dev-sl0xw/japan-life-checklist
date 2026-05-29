@@ -7,7 +7,7 @@
         content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>Japan Life Checklist</title>
-  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30b">
+  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30c">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
@@ -15,10 +15,11 @@
     <div class="flex flex-wrap items-center justify-between gap-2">
       <h1 class="text-2xl font-bold">🗾 Japan Life Checklist</h1>
       <div class="jlc-header-actions no-print">
-        <button id="btn-export" type="button" class="jlc-btn">⬇ 내보내기</button>
-        <label class="jlc-btn" for="import-file">⬆ 가져오기</label>
+        <button id="btn-lang" type="button" class="jlc-btn jlc-btn-lang">日本語</button>
+        <button id="btn-export" type="button" class="jlc-btn" data-i18n="app.export">⬇ 내보내기</button>
+        <label class="jlc-btn" for="import-file" data-i18n="app.import">⬆ 가져오기</label>
         <input id="import-file" type="file" accept="application/json,.json" hidden>
-        <button id="btn-reset" type="button" class="jlc-btn jlc-btn-danger">↺ 초기화</button>
+        <button id="btn-reset" type="button" class="jlc-btn jlc-btn-danger" data-i18n="app.reset">↺ 초기화</button>
       </div>
     </div>
     <p class="text-sm text-slate-500 mt-1" id="data-version-display">data_version: loading…</p>
@@ -27,57 +28,58 @@
   <main class="max-w-5xl mx-auto px-4 pb-12">
     <section id="profile-panel" aria-label="내 상황 (My Profile)">
       <div class="flex items-center justify-between mb-1">
-        <h2 class="text-lg font-semibold">📋 내 상황 (My Profile)</h2>
-        <button id="btn-profile-clear" type="button" class="jlc-btn jlc-btn-sm no-print">모두 해제</button>
+        <h2 class="text-lg font-semibold" data-i18n="profile.title">📋 내 상황 (My Profile)</h2>
+        <button id="btn-profile-clear" type="button" class="jlc-btn jlc-btn-sm no-print" data-i18n="profile.clear">모두 해제</button>
       </div>
-      <p class="text-sm text-slate-500 mb-3">해당하는 항목을 켜면, 그에 맞는 체크리스트만 아래에 표시됩니다.</p>
+      <p class="text-sm text-slate-500 mb-3" data-i18n="profile.hint">해당하는 항목을 켜면, 그에 맞는 체크리스트만 아래에 표시됩니다.</p>
       <div id="profile-flags" class="jlc-flags"></div>
     </section>
 
     <section id="toolbar" aria-label="보기·필터" class="jlc-toolbar no-print">
       <div class="jlc-toolbar-row">
-        <label class="jlc-toolbar-label" for="anchor-move">📅 이사 예정일</label>
+        <label class="jlc-toolbar-label" for="anchor-move" data-i18n="tb.anchorMove">📅 이사 예정일</label>
         <input id="anchor-move" type="date" class="jlc-date" aria-label="이사 예정일">
-        <label class="jlc-toolbar-label" for="anchor-job">퇴직(이직)일</label>
+        <label class="jlc-toolbar-label" for="anchor-job" data-i18n="tb.anchorJob">퇴직(이직)일</label>
         <input id="anchor-job" type="date" class="jlc-date" aria-label="퇴직일">
-        <span class="jlc-toolbar-hint">날짜를 넣으면 D-Day가 실제 날짜로 계산됩니다</span>
+        <span class="jlc-toolbar-hint" data-i18n="tb.anchorHint">날짜를 넣으면 D-Day가 실제 날짜로 계산됩니다</span>
       </div>
       <div class="jlc-toolbar-row">
-        <label class="jlc-toolbar-label" for="region-select">🗾 거주 지역</label>
+        <label class="jlc-toolbar-label" for="region-select" data-i18n="tb.region">🗾 거주 지역</label>
         <select id="region-select" class="jlc-select" aria-label="거주 도도부현"></select>
         <select id="city-select" class="jlc-select" aria-label="거주 구/시" hidden></select>
-        <span class="jlc-toolbar-hint">대형쓰레기·役所 등 지역별 안내에 반영 (도쿄도는 23구 선택 가능)</span>
+        <span class="jlc-toolbar-hint" data-i18n="tb.regionHint">대형쓰레기·役所 등 지역별 안내에 반영 (도쿄도는 23구 선택 가능)</span>
       </div>
       <div class="jlc-toolbar-row" role="group" aria-label="보기 모드">
-        <span class="jlc-toolbar-label">보기</span>
-        <button id="view-domain" type="button" class="jlc-seg jlc-seg-on" aria-pressed="true">도메인별</button>
-        <button id="view-timeline" type="button" class="jlc-seg" aria-pressed="false">타임라인순</button>
+        <span class="jlc-toolbar-label" data-i18n="tb.view">보기</span>
+        <button id="view-domain" type="button" class="jlc-seg jlc-seg-on" aria-pressed="true" data-i18n="tb.viewDomain">도메인별</button>
+        <button id="view-timeline" type="button" class="jlc-seg" aria-pressed="false" data-i18n="tb.viewTimeline">타임라인순</button>
+        <button id="btn-settings-reset" type="button" class="jlc-btn jlc-btn-sm jlc-settings-reset" data-i18n="tb.settingsReset">↺ 표시 설정 초기화</button>
       </div>
       <div class="jlc-toolbar-row">
-        <label class="jlc-toolbar-label" for="filter-status">상태</label>
+        <label class="jlc-toolbar-label" for="filter-status" data-i18n="tb.status">상태</label>
         <select id="filter-status" class="jlc-select">
-          <option value="all">전체</option>
-          <option value="incomplete">미완료</option>
-          <option value="done">완료</option>
+          <option value="all" data-i18n="tb.statusAll">전체</option>
+          <option value="incomplete" data-i18n="tb.statusIncomplete">미완료</option>
+          <option value="done" data-i18n="tb.statusDone">완료</option>
         </select>
-        <label class="jlc-toolbar-label" for="filter-risk">위험도</label>
+        <label class="jlc-toolbar-label" for="filter-risk" data-i18n="tb.risk">위험도</label>
         <select id="filter-risk" class="jlc-select">
-          <option value="all">전체</option>
-          <option value="legal_deadline">🟥 법정기한</option>
-          <option value="money_loss">🟧 금전손실</option>
-          <option value="service_interruption">🟨 서비스중단</option>
-          <option value="convenience">⬜ 편의</option>
+          <option value="all" data-i18n="tb.riskAll">전체</option>
+          <option value="legal_deadline" data-i18n="tb.riskLegal">🟥 법정기한</option>
+          <option value="money_loss" data-i18n="tb.riskMoney">🟧 금전손실</option>
+          <option value="service_interruption" data-i18n="tb.riskService">🟨 서비스중단</option>
+          <option value="convenience" data-i18n="tb.riskConv">⬜ 편의</option>
         </select>
       </div>
       <div class="jlc-toolbar-row">
-        <label class="jlc-toolbar-label" for="search-input">검색</label>
-        <input id="search-input" type="search" class="jlc-search" placeholder="제목·설명·일본어 검색 (예: 任意継続, 면허)" aria-label="체크리스트 검색">
+        <label class="jlc-toolbar-label" for="search-input" data-i18n="tb.search">검색</label>
+        <input id="search-input" type="search" class="jlc-search" data-i18n-ph="tb.searchPh" placeholder="제목·설명·일본어 검색 (예: 任意継続, 면허)" aria-label="체크리스트 검색">
       </div>
     </section>
 
     <section id="checklist" aria-label="체크리스트" class="mt-6">
       <div class="flex items-baseline justify-between mb-3 flex-wrap gap-2">
-        <h2 class="text-lg font-semibold">체크리스트</h2>
+        <h2 class="text-lg font-semibold" data-i18n="cl.title">체크리스트</h2>
         <span id="progress-display" class="text-sm text-slate-500"></span>
       </div>
       <p id="result-count" class="text-xs text-slate-400 mb-2" aria-live="polite"></p>
@@ -87,6 +89,6 @@
     <div id="banner-region" aria-live="polite" class="mt-4"></div>
   </main>
 
-  <script type="module" src="./js/app.js?v=2026-05-30b"></script>
+  <script type="module" src="./js/app.js?v=2026-05-30c"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ export const KEYS = {
   view:          'jlc:view',
   anchors:       'jlc:anchors',
   region:        'jlc:region',
+  lang:          'jlc:lang',
   orphan:        'jlc:orphan',
 };
 
@@ -105,6 +106,10 @@ export function setAnchor(type, date) {
   return safeSet(KEYS.anchors, a);
 }
 
+// ── 언어(lang) ───────────────────────────────────────────
+export function getLang() { const v = safeGet(KEYS.lang, 'ko'); return (v === 'ko' || v === 'ja') ? v : 'ko'; }
+export function setLang(lang) { return safeSet(KEYS.lang, (lang === 'ja' ? 'ja' : 'ko')); }
+
 // ── 지역(region) — {pref, city} ──────────────────────────
 export function getRegion() {
   const v = safeGet(KEYS.region, null);
@@ -136,6 +141,7 @@ export function exportData() {
     view: getView(),
     anchors: getAnchors(),
     region: getRegion(),
+    lang: getLang(),
   };
 }
 
@@ -215,6 +221,7 @@ export function importData(rawText, { knownItemIds, knownFlags, knownRegions, ap
   safeSet(KEYS.notes, notes);
   safeSet(KEYS.anchors, anchors);
   if (region !== undefined) safeSet(KEYS.region, region);
+  if (obj.lang === 'ko' || obj.lang === 'ja') safeSet(KEYS.lang, obj.lang);
   const orphanCount = Object.keys(orphanChecked).length + Object.keys(orphanNotes).length;
   if (orphanCount > 0) safeSet(KEYS.orphan, { checked: orphanChecked, notes: orphanNotes });
 

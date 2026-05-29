@@ -149,6 +149,8 @@ a { color: var(--jlc-accent); }
 }
 .jlc-btn:hover { border-color: var(--jlc-accent); }
 .jlc-btn-sm { min-height: 30px; padding: 0.2rem 0.55rem; font-size: 0.78rem; }
+.jlc-btn-lang { border-color: var(--jlc-accent); color: var(--jlc-accent); font-weight: 600; }
+.jlc-settings-reset { margin-left: auto; }
 .jlc-btn-danger { color: #b91c1c; border-color: #fca5a5; }
 @media (prefers-color-scheme: dark) { .jlc-btn-danger { color: #fca5a5; border-color: #7f1d1d; } }
 
