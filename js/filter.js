@@ -1,7 +1,7 @@
 // filter.js — visible_when 평가 + 검색/상태/위험 필터. Stop #1~#3 구현.
 // visible_when 시맨틱: 카테고리 → 소분류 → 항목 conjunctive(AND). 빈/누락 = always-visible.
 
-import { normalizeForSearch } from './i18n.js?v=2026-05-30';
+import { normalizeForSearch } from './i18n.js?v=2026-05-30b';
 
 export function isVisible(visibleWhen, profile) {
   if (!visibleWhen) return true;

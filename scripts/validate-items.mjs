@@ -62,14 +62,20 @@ function main() {
     if (!f.label_ko) errors.push(`profile_flag.label_ko 누락: ${f.id}`);
   }
 
-  // regions (도도부현) — 선택적이나 있으면 형식 검증
+  // regions (도도부현) + cities(구/시) — 선택적이나 있으면 형식 검증
   const regionIds = new Set();
+  const compositeIds = new Set(); // "pref/city"
   if (data.regions !== undefined) {
     if (!Array.isArray(data.regions)) errors.push('regions 배열 아님');
     else for (const r of data.regions) {
       if (!ID_REGEX.test(r.id || '')) errors.push(`region.id 정규식 위반: ${r.id}`);
       if (!r.label_ko) errors.push(`region.label_ko 누락: ${r.id}`);
       regionIds.add(r.id);
+      for (const c of r.cities || []) {
+        if (!ID_REGEX.test(c.id || '')) errors.push(`region ${r.id}: city.id 정규식 위반: ${c.id}`);
+        if (!c.label_ko) errors.push(`region ${r.id}: city.label_ko 누락: ${c.id}`);
+        compositeIds.add(`${r.id}/${c.id}`);
+      }
     }
   }
 
@@ -83,7 +89,10 @@ function main() {
         regionKeys.add(key);
         if (typeof byRegion !== 'object' || Array.isArray(byRegion)) { errors.push(`region_resources.${key} 객체 아님`); continue; }
         for (const [rid, links] of Object.entries(byRegion)) {
-          if (rid !== '_default' && regionIds.size > 0 && !regionIds.has(rid)) errors.push(`region_resources.${key}: 알 수 없는 region "${rid}"`);
+          if (rid !== '_default' && regionIds.size > 0) {
+            const known = rid.includes('/') ? compositeIds.has(rid) : regionIds.has(rid);
+            if (!known) errors.push(`region_resources.${key}: 알 수 없는 region "${rid}"`);
+          }
           if (!Array.isArray(links)) { errors.push(`region_resources.${key}.${rid} 배열 아님`); continue; }
           for (const ln of links) {
             if (!/^https:\/\//.test(ln.url || '')) errors.push(`region_resources.${key}.${rid}: 비-https url "${ln.url}"`);

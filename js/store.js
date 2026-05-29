@@ -105,9 +105,16 @@ export function setAnchor(type, date) {
   return safeSet(KEYS.anchors, a);
 }
 
-// ── 지역(region) ─────────────────────────────────────────
-export function getRegion(fallback = 'tokyo') { return safeGet(KEYS.region, fallback) || fallback; }
-export function setRegion(id) { return safeSet(KEYS.region, id); }
+// ── 지역(region) — {pref, city} ──────────────────────────
+export function getRegion() {
+  const v = safeGet(KEYS.region, null);
+  if (typeof v === 'string') return { pref: v, city: null };           // 구버전 호환
+  if (v && typeof v === 'object' && v.pref) return { pref: v.pref, city: v.city || null };
+  return { pref: 'tokyo', city: null };
+}
+export function setRegion(region) {
+  return safeSet(KEYS.region, { pref: region.pref, city: region.city || null });
+}
 
 // ── view 상태 ────────────────────────────────────────────
 const DEFAULT_VIEW = { mode: 'domain', status: 'all', risk: 'all', search: '' };
@@ -192,10 +199,14 @@ export function importData(rawText, { knownItemIds, knownFlags, knownRegions, ap
       anchors[t] = (typeof v === 'string' && DATE_RE.test(v)) ? v : null;
     }
   }
-  // region: 알려진 region id만 (knownRegions 미전달 시 문자열만 통과)
+  // region: {pref, city} 또는 구버전 문자열. pref는 화이트리스트 검증.
   let region;
-  if (typeof obj.region === 'string') {
-    region = (knownRegions && !knownRegions.has(obj.region)) ? undefined : obj.region;
+  const rawRegion = obj.region;
+  if (typeof rawRegion === 'string') {
+    region = (knownRegions && !knownRegions.has(rawRegion)) ? undefined : { pref: rawRegion, city: null };
+  } else if (rawRegion && typeof rawRegion === 'object' && typeof rawRegion.pref === 'string') {
+    region = (knownRegions && !knownRegions.has(rawRegion.pref)) ? undefined
+      : { pref: rawRegion.pref, city: (typeof rawRegion.city === 'string' ? rawRegion.city : null) };
   }
 
   // 적용

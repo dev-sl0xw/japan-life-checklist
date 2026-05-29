@@ -139,7 +139,124 @@
     {
       "id": "tokyo",
       "label_ko": "도쿄도",
-      "label_ja": "東京都"
+      "label_ja": "東京都",
+      "cities": [
+        {
+          "id": "chiyoda",
+          "label_ko": "지요다구",
+          "label_ja": "千代田区"
+        },
+        {
+          "id": "chuo",
+          "label_ko": "주오구",
+          "label_ja": "中央区"
+        },
+        {
+          "id": "minato",
+          "label_ko": "미나토구",
+          "label_ja": "港区"
+        },
+        {
+          "id": "shinjuku",
+          "label_ko": "신주쿠구",
+          "label_ja": "新宿区"
+        },
+        {
+          "id": "bunkyo",
+          "label_ko": "분쿄구",
+          "label_ja": "文京区"
+        },
+        {
+          "id": "taito",
+          "label_ko": "다이토구",
+          "label_ja": "台東区"
+        },
+        {
+          "id": "sumida",
+          "label_ko": "스미다구",
+          "label_ja": "墨田区"
+        },
+        {
+          "id": "koto",
+          "label_ko": "고토구",
+          "label_ja": "江東区"
+        },
+        {
+          "id": "shinagawa",
+          "label_ko": "시나가와구",
+          "label_ja": "品川区"
+        },
+        {
+          "id": "meguro",
+          "label_ko": "메구로구",
+          "label_ja": "目黒区"
+        },
+        {
+          "id": "ota",
+          "label_ko": "오타구",
+          "label_ja": "大田区"
+        },
+        {
+          "id": "setagaya",
+          "label_ko": "세타가야구",
+          "label_ja": "世田谷区"
+        },
+        {
+          "id": "shibuya",
+          "label_ko": "시부야구",
+          "label_ja": "渋谷区"
+        },
+        {
+          "id": "nakano",
+          "label_ko": "나카노구",
+          "label_ja": "中野区"
+        },
+        {
+          "id": "suginami",
+          "label_ko": "스기나미구",
+          "label_ja": "杉並区"
+        },
+        {
+          "id": "toshima",
+          "label_ko": "도시마구",
+          "label_ja": "豊島区"
+        },
+        {
+          "id": "kita",
+          "label_ko": "기타구",
+          "label_ja": "北区"
+        },
+        {
+          "id": "arakawa",
+          "label_ko": "아라카와구",
+          "label_ja": "荒川区"
+        },
+        {
+          "id": "itabashi",
+          "label_ko": "이타바시구",
+          "label_ja": "板橋区"
+        },
+        {
+          "id": "nerima",
+          "label_ko": "네리마구",
+          "label_ja": "練馬区"
+        },
+        {
+          "id": "adachi",
+          "label_ko": "아다치구",
+          "label_ja": "足立区"
+        },
+        {
+          "id": "katsushika",
+          "label_ko": "가쓰시카구",
+          "label_ja": "葛飾区"
+        },
+        {
+          "id": "edogawa",
+          "label_ko": "에도가와구",
+          "label_ja": "江戸川区"
+        }
+      ]
     },
     {
       "id": "kanagawa",
@@ -321,7 +438,168 @@
           "publisher": "東京都環境局"
         }
       ],
-      "_default": []
+      "_default": [],
+      "tokyo/chiyoda": [
+        {
+          "label_ko": "지요다구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/sodai.city.chiyoda-u/offer/offerList_initDisplay",
+          "publisher": "千代田区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/chuo": [
+        {
+          "label_ko": "주오구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/kankyo-chuo-tokyo-u/offer/offerList_initDisplay",
+          "publisher": "中央区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/minato": [
+        {
+          "label_ko": "미나토구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/sodai-minato-tokyo-u/offer/offerList_initDisplay",
+          "publisher": "港区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/shinjuku": [
+        {
+          "label_ko": "신주쿠구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www.shinjuku-sodai.com/receipts/home",
+          "publisher": "新宿区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/bunkyo": [
+        {
+          "label_ko": "분쿄구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/sodai-bunkyo-tokyo-u/offer/offerList_initDisplay",
+          "publisher": "文京区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/taito": [
+        {
+          "label_ko": "다이토구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/taitosodai-u/offer/offerList_initDisplay",
+          "publisher": "台東区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/sumida": [
+        {
+          "label_ko": "스미다구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www2.sodai-web.jp/sumida/index.html",
+          "publisher": "墨田区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/koto": [
+        {
+          "label_ko": "고토구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://line-tokyo.sodai-web.jp/index2.html",
+          "publisher": "江東区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/shinagawa": [
+        {
+          "label_ko": "시나가와구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://shinagawa-sodai.com/receipts/home",
+          "publisher": "品川区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/meguro": [
+        {
+          "label_ko": "메구로구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www2.sodai-web.jp/meguro/index.html",
+          "publisher": "目黒区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/ota": [
+        {
+          "label_ko": "오타구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www.ota-sodai.com/receipts/home/entry",
+          "publisher": "大田区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/setagaya": [
+        {
+          "label_ko": "세타가야구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www.sodai-setagaya.jp/",
+          "publisher": "世田谷区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/shibuya": [
+        {
+          "label_ko": "시부야구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/gomi_sodai.html",
+          "publisher": "渋谷区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/nakano": [
+        {
+          "label_ko": "나카노구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www2.sodai-web.jp/nakano/index.html",
+          "publisher": "中野区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/suginami": [
+        {
+          "label_ko": "스기나미구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/kankyo-suginami-tokyo-u/",
+          "publisher": "杉並区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/toshima": [
+        {
+          "label_ko": "도시마구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/toshima-sodai-u/",
+          "publisher": "豊島区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/kita": [
+        {
+          "label_ko": "기타구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/sodai-kita-tokyo-u/",
+          "publisher": "北区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/arakawa": [
+        {
+          "label_ko": "아라카와구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www2.sodai-web.jp/arakawa/index.html",
+          "publisher": "荒川区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/itabashi": [
+        {
+          "label_ko": "이타바시구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/itabashi_sodai-u/",
+          "publisher": "板橋区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/nerima": [
+        {
+          "label_ko": "네리마구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www.sodai-nerima.jp/",
+          "publisher": "練馬区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/adachi": [
+        {
+          "label_ko": "아다치구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/sodai-adachi-u/",
+          "publisher": "足立区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/katsushika": [
+        {
+          "label_ko": "가쓰시카구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://www2.sodai-web.jp/katsushika/index.html",
+          "publisher": "葛飾区粗大ごみ受付センター"
+        }
+      ],
+      "tokyo/edogawa": [
+        {
+          "label_ko": "에도가와구 대형쓰레기(粗大ごみ) 접수",
+          "url": "https://ecolife.e-tumo.jp/edogawa.tokyo-u/",
+          "publisher": "江戸川区粗大ごみ受付センター"
+        }
+      ]
     },
     "yakusho": {
       "tokyo": [

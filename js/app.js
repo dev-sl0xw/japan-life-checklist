@@ -7,12 +7,12 @@ import {
   getChecked, setChecked, getNotes, setNote, getView, setView,
   getAnchors, setAnchor, getRegion, setRegion,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30';
-import { validateRuntime } from './validate.js?v=2026-05-30';
+} from './store.js?v=2026-05-30b';
+import { validateRuntime } from './validate.js?v=2026-05-30b';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30';
+} from './filter.js?v=2026-05-30b';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30b';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -21,13 +21,19 @@ const $ = (id) => document.getElementById(id);
 const state = {
   data: null, profile: {}, checked: {}, notes: {},
   view: { mode: 'domain', status: 'all', risk: 'all', search: '' },
-  anchors: { move: null, job: null }, region: 'tokyo',
+  anchors: { move: null, job: null }, region: { pref: 'tokyo', city: null },
   index: null, today: new Date(),
 };
 
-function regionLabel(id) {
-  const r = (state.data.regions || []).find(x => x.id === id);
-  return r ? r.label_ko : id;
+function prefEntry(pref) { return (state.data.regions || []).find(x => x.id === pref); }
+function regionLabel(region) {
+  const r = prefEntry(region.pref);
+  if (!r) return region.pref;
+  if (region.city) {
+    const c = (r.cities || []).find(x => x.id === region.city);
+    if (c) return `${r.label_ko} ${c.label_ko}`;
+  }
+  return r.label_ko;
 }
 
 function banner(msg, kind = 'info') {
@@ -166,9 +172,10 @@ function doReset() {
   clearAll();
   state.profile = {}; state.checked = {}; state.notes = {};
   state.view = { mode: 'domain', status: 'all', risk: 'all', search: '' };
-  state.anchors = { move: null, job: null }; state.region = 'tokyo';
+  state.anchors = { move: null, job: null }; state.region = { pref: 'tokyo', city: null };
   $('filter-status').value = 'all'; $('filter-risk').value = 'all'; $('search-input').value = '';
-  $('anchor-move').value = ''; $('anchor-job').value = ''; $('region-select').value = 'tokyo';
+  $('anchor-move').value = ''; $('anchor-job').value = '';
+  $('region-select').value = 'tokyo'; populateCities();
   setMode('domain');
   renderProfile($('profile-flags'), state.data.profile_flags, state.profile, onToggle);
   rerenderList(); refreshProgress();
@@ -193,8 +200,15 @@ function wireControls() {
   // 기준일
   $('anchor-move').addEventListener('change', (e) => { state.anchors.move = e.target.value || null; setAnchor('move', e.target.value); rerenderList(); });
   $('anchor-job').addEventListener('change', (e) => { state.anchors.job = e.target.value || null; setAnchor('job', e.target.value); rerenderList(); });
-  // 지역
-  $('region-select').addEventListener('change', (e) => { state.region = e.target.value; setRegion(e.target.value); rerenderList(); });
+  // 지역 (도도부현 + 구/시)
+  $('region-select').addEventListener('change', (e) => {
+    state.region = { pref: e.target.value, city: null };
+    setRegion(state.region); populateCities(); rerenderList();
+  });
+  $('city-select').addEventListener('change', (e) => {
+    state.region = { pref: state.region.pref, city: e.target.value || null };
+    setRegion(state.region); rerenderList();
+  });
 }
 
 function populateRegions() {
@@ -205,7 +219,27 @@ function populateRegions() {
     o.value = r.id; o.textContent = `${r.label_ko} / ${r.label_ja}`;
     sel.appendChild(o);
   }
-  sel.value = state.region;
+  sel.value = state.region.pref;
+  populateCities();
+}
+
+// 선택된 도도부현에 cities가 있으면 구/시 select 노출, 없으면 숨김
+function populateCities() {
+  const sel = $('city-select');
+  const r = prefEntry(state.region.pref);
+  const cities = (r && r.cities) || [];
+  sel.textContent = '';
+  if (cities.length === 0) { sel.hidden = true; return; }
+  sel.hidden = false;
+  const none = document.createElement('option');
+  none.value = ''; none.textContent = '(구/시 전체)';
+  sel.appendChild(none);
+  for (const c of cities) {
+    const o = document.createElement('option');
+    o.value = c.id; o.textContent = `${c.label_ko} / ${c.label_ja}`;
+    sel.appendChild(o);
+  }
+  sel.value = state.region.city || '';
 }
 
 function syncControlsFromView() {

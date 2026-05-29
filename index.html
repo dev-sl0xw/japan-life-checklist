@@ -7,7 +7,7 @@
         content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>Japan Life Checklist</title>
-  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30">
+  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30b">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
@@ -45,7 +45,8 @@
       <div class="jlc-toolbar-row">
         <label class="jlc-toolbar-label" for="region-select">🗾 거주 지역</label>
         <select id="region-select" class="jlc-select" aria-label="거주 도도부현"></select>
-        <span class="jlc-toolbar-hint">대형쓰레기·役所 등 지역별 안내에 반영</span>
+        <select id="city-select" class="jlc-select" aria-label="거주 구/시" hidden></select>
+        <span class="jlc-toolbar-hint">대형쓰레기·役所 등 지역별 안내에 반영 (도쿄도는 23구 선택 가능)</span>
       </div>
       <div class="jlc-toolbar-row" role="group" aria-label="보기 모드">
         <span class="jlc-toolbar-label">보기</span>
@@ -86,6 +87,6 @@
     <div id="banner-region" aria-live="polite" class="mt-4"></div>
   </main>
 
-  <script type="module" src="./js/app.js?v=2026-05-30"></script>
+  <script type="module" src="./js/app.js?v=2026-05-30b"></script>
 </body>
 </html>

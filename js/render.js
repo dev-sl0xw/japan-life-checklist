@@ -139,9 +139,10 @@ function renderItem(entry, ctx, { showDomain = false } = {}) {
   let regionFallbackNote = null;
   if (item.region_key && regionResources && regionResources[item.region_key]) {
     const byRegion = regionResources[item.region_key];
-    const resolved = byRegion[region] || byRegion._default || [];
+    const pref = region?.pref, city = region?.city;
+    const resolved = (city && byRegion[`${pref}/${city}`]) || byRegion[pref] || byRegion._default || [];
     for (const ln of resolved) if (/^https:\/\//.test(ln.url || '')) actionLinks.push(ln);
-    if (resolved.length === 0) regionFallbackNote = `📍 ${regionLabel || region}: 거주 지자체 공식 사이트에서 확인하세요`;
+    if (resolved.length === 0) regionFallbackNote = `📍 ${regionLabel}: 거주 지자체 공식 사이트에서 확인하세요`;
   }
   if (actionLinks.length > 0) {
     const row = el('div', { class: 'jlc-card-actions' });
