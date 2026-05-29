@@ -3,7 +3,7 @@
 
 import {
   t, fmtRelative, fmtCountdown, fmtVerifiedAgo, fmtRegionNote,
-} from './strings.js?v=2026-05-30c';
+} from './strings.js?v=2026-05-30d';
 
 const RISK_META = {
   legal_deadline:       { mark: '🟥', cls: 'jlc-risk-legal',       prio: 0 },

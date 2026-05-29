@@ -7,7 +7,7 @@
         content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>Japan Life Checklist</title>
-  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30c">
+  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30d">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
@@ -78,9 +78,13 @@
     </section>
 
     <section id="checklist" aria-label="체크리스트" class="mt-6">
-      <div class="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+      <div class="flex items-baseline justify-between mb-1 flex-wrap gap-2">
         <h2 class="text-lg font-semibold" data-i18n="cl.title">체크리스트</h2>
-        <span id="progress-display" class="text-sm text-slate-500"></span>
+        <span id="progress-display" class="jlc-progress-label"></span>
+      </div>
+      <div id="progress-bar" class="jlc-progress" role="progressbar"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden>
+        <div id="progress-fill" class="jlc-progress-fill"></div>
       </div>
       <p id="result-count" class="text-xs text-slate-400 mb-2" aria-live="polite"></p>
       <div id="categories-root"></div>
@@ -89,6 +93,6 @@
     <div id="banner-region" aria-live="polite" class="mt-4"></div>
   </main>
 
-  <script type="module" src="./js/app.js?v=2026-05-30c"></script>
+  <script type="module" src="./js/app.js?v=2026-05-30d"></script>
 </body>
 </html>

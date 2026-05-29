@@ -7,13 +7,13 @@ import {
   getChecked, setChecked, getNotes, setNote, getView, setView,
   getAnchors, setAnchor, getRegion, setRegion, getLang, setLang,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30c';
-import { validateRuntime } from './validate.js?v=2026-05-30c';
+} from './store.js?v=2026-05-30d';
+import { validateRuntime } from './validate.js?v=2026-05-30d';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30c';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30c';
-import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30c';
+} from './filter.js?v=2026-05-30d';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30d';
+import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30d';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -69,8 +69,22 @@ function refreshProgress() {
   const vis = profileVisible();
   const total = vis.length;
   const done = vis.filter(({ item }) => state.checked[item.id] === true).length;
+  const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
   const node = $('progress-display');
   if (node) node.textContent = fmtProgress(state.lang, done, total);
+
+  const bar = $('progress-bar');
+  const fill = $('progress-fill');
+  if (bar && fill) {
+    bar.hidden = total === 0;
+    bar.setAttribute('aria-valuenow', String(pct));
+    bar.setAttribute('aria-label', fmtProgress(state.lang, done, total));
+    fill.style.width = `${pct}%`;
+    // 완료율 구간별 색상 (저→고): 빨강 → 주황 → 연두 → 초록
+    const tier = pct === 100 ? 'is-done' : pct >= 67 ? 'is-high' : pct >= 34 ? 'is-mid' : 'is-low';
+    fill.className = `jlc-progress-fill ${tier}`;
+  }
 }
 
 function rerenderList() {
