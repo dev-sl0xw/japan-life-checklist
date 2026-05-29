@@ -34,15 +34,44 @@
           "items": [
             {
               "id": "mv_decide_compare_001",
-              "title_ko": "새 집 후보 3곳 이상 비교 (스캐폴딩 더미)",
+              "title_ko": "새 집 후보 3곳 이상 비교 [더미]",
               "title_ja": "新居候補3件以上比較",
               "description_ko": "賃料·間取り·駅徒歩·礼金·更新料 비교표 작성",
               "timeline": "D-60",
               "timeline_offset_days": -60,
               "tags": ["계약"],
               "risk_level": "convenience",
-              "visible_when": { "any_of": ["moving"] },
+              "visible_when": {},
               "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        },
+        {
+          "id": "cat_moving_after",
+          "label_ko": "이사 후",
+          "label_ja": "引っ越し後",
+          "items": [
+            {
+              "id": "mv_after_tennyu_001",
+              "title_ko": "転入届 제출 (전입 후 14일 이내) [더미·Stop#2 검증]",
+              "title_ja": "転入届の提出（転入後14日以内）",
+              "description_ko": "새 주소지 市区町村 役所에 転入届 제출. 期限 초과 시 過料 가능.",
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": ["행정", "기한"],
+              "risk_level": "legal_deadline",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "総務省 — 住民基本台帳 (転入届)",
+                  "url": "https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/zaigai/index.html",
+                  "publisher": "総務省",
+                  "last_verified": "2026-05-29"
+                }
+              ],
               "last_verified": "2026-05-29",
               "needs_verification": false,
               "links": []
@@ -57,7 +86,38 @@
       "label_ko": "이직",
       "label_ja": "転職",
       "visible_when": { "any_of": ["jobchange"] },
-      "subcategories": []
+      "subcategories": [
+        {
+          "id": "cat_jobchange_gap",
+          "label_ko": "공백기",
+          "label_ja": "ブランク期間",
+          "visible_when": { "any_of": ["has_job_gap"] },
+          "items": [
+            {
+              "id": "jc_gap_ninikeizoku_001",
+              "title_ko": "健康保険 任意継続 신청 (자격상실 다음날부터 20일 이내) [더미·Stop#2 검증]",
+              "title_ja": "健康保険の任意継続の申請（資格喪失日の翌日から20日以内）",
+              "description_ko": "공백기 의료보험 공백 방지. 任意継続 vs 国民健康保険 보험료 비교 후 선택.",
+              "timeline": "D+1",
+              "timeline_offset_days": 1,
+              "tags": ["보험", "기한"],
+              "risk_level": "money_loss",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "協会けんぽ — 任意継続被保険者制度",
+                  "url": "https://www.kyoukaikenpo.or.jp/g3/cat310/",
+                  "publisher": "全国健康保険協会",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cat_admin",
@@ -65,7 +125,60 @@
       "label_ko": "직결 외국인/한국인 필수 행정",
       "label_ja": "在住外国人 必須行政",
       "visible_when": {},
-      "subcategories": []
+      "subcategories": [
+        {
+          "id": "cat_admin_telecom",
+          "label_ko": "통신·NHK",
+          "label_ja": "通信・NHK",
+          "items": [
+            {
+              "id": "ad_telecom_nhk_001",
+              "title_ko": "NHK 수신계약 주소변경 [더미]",
+              "title_ja": "NHK受信契約の住所変更",
+              "description_ko": "이사 시 NHK에 새 주소 등록. 미처리 시 청구 누락·중복 위험.",
+              "timeline": "D+7",
+              "timeline_offset_days": 7,
+              "tags": ["통신"],
+              "risk_level": "service_interruption",
+              "visible_when": {},
+              "sources": [],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        },
+        {
+          "id": "cat_admin_car",
+          "label_ko": "자동차",
+          "label_ja": "自動車",
+          "visible_when": { "any_of": ["has_car"] },
+          "items": [
+            {
+              "id": "ad_car_shaken_001",
+              "title_ko": "車検証 주소변경 (변경 후 15일 이내) [더미·Stop#2 검증]",
+              "title_ja": "車検証の住所変更（変更後15日以内）",
+              "description_ko": "운輸支局/軽自動車検査協会에서 車検証 주소 변경. 車庫証明 선행 필요할 수 있음.",
+              "timeline": "D+14",
+              "timeline_offset_days": 14,
+              "tags": ["자동차", "기한"],
+              "risk_level": "legal_deadline",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "国土交通省 — 自動車の登録 (変更登録)",
+                  "url": "https://www.mlit.go.jp/jidosha/jidosha_tk2_000031.html",
+                  "publisher": "国土交通省",
+                  "last_verified": "2026-05-29"
+                }
+              ],
+              "last_verified": "2026-05-29",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }

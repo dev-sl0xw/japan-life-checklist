@@ -45,6 +45,99 @@ a { color: var(--jlc-accent); }
   outline-offset: 2px;
 }
 
+/* ── My Profile 토글 ─────────────────────────────────── */
+.jlc-flags {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .jlc-flags { grid-template-columns: 1fr 1fr; }
+}
+.jlc-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--jlc-border);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--jlc-fg);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.jlc-flag-on {
+  border-color: var(--jlc-accent);
+  background: color-mix(in srgb, var(--jlc-accent) 14%, transparent);
+}
+.jlc-flag-ko { font-weight: 600; }
+.jlc-flag-ja { font-size: 0.78rem; color: var(--jlc-muted); }
+
+/* ── 카테고리 / 소분류 ──────────────────────────────── */
+.jlc-cat { margin-top: 1.5rem; }
+.jlc-cat-head {
+  display: flex; align-items: baseline; gap: 0.5rem;
+  font-size: 1.1rem; font-weight: 700;
+  padding-bottom: 0.35rem; border-bottom: 2px solid var(--jlc-border);
+}
+.jlc-cat-ja, .jlc-sub-ja { font-size: 0.8rem; font-weight: 400; color: var(--jlc-muted); }
+.jlc-sub { margin-top: 1rem; }
+.jlc-sub-head {
+  display: flex; align-items: baseline; gap: 0.5rem;
+  font-size: 0.95rem; font-weight: 600; color: var(--jlc-muted);
+  margin: 0 0 0.4rem;
+}
+
+/* ── 항목 카드 ─────────────────────────────────────── */
+.jlc-card-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.jlc-card {
+  border: 1px solid var(--jlc-border);
+  border-radius: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  background: color-mix(in srgb, var(--jlc-fg) 3%, transparent);
+}
+.jlc-card-top { display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; }
+.jlc-card-top input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
+.jlc-card-titles { display: flex; flex-direction: column; gap: 0.1rem; }
+.jlc-card-ko { font-weight: 600; }
+.jlc-card-ja { font-size: 0.8rem; color: var(--jlc-muted); }
+.jlc-card-meta { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.45rem 0 0; padding-left: 1.85rem; }
+.jlc-card-desc { margin: 0.4rem 0 0; padding-left: 1.85rem; font-size: 0.88rem; color: var(--jlc-muted); }
+.jlc-card-sources { margin: 0.4rem 0 0; padding-left: 1.85rem; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; }
+.jlc-src-label { color: var(--jlc-muted); }
+.jlc-src-link { text-decoration: underline; }
+
+/* ── chip (색 + 텍스트 항상 동반) ──────────────────── */
+.jlc-chip {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  font-size: 0.74rem; font-weight: 600;
+  padding: 0.1rem 0.45rem; border-radius: 999px;
+  border: 1px solid var(--jlc-border);
+}
+.jlc-risk-legal       { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+.jlc-risk-money       { background: #ffedd5; color: #9a3412; border-color: #fdba74; }
+.jlc-risk-service     { background: #fef9c3; color: #854d0e; border-color: #fde047; }
+.jlc-risk-convenience { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+.jlc-chip-timeline    { background: transparent; color: var(--jlc-muted); }
+.jlc-chip-verify      { background: #fef9c3; color: #854d0e; border-color: #fde047; }
+@media (prefers-color-scheme: dark) {
+  .jlc-risk-legal       { background: #450a0a; color: #fecaca; border-color: #7f1d1d; }
+  .jlc-risk-money       { background: #431407; color: #fed7aa; border-color: #9a3412; }
+  .jlc-risk-service     { background: #422006; color: #fef08a; border-color: #854d0e; }
+  .jlc-risk-convenience { background: #1e293b; color: #cbd5e1; border-color: #334155; }
+  .jlc-chip-verify      { background: #422006; color: #fef08a; border-color: #854d0e; }
+}
+
+/* ── 배너 / 빈 상태 ────────────────────────────────── */
+.jlc-banner { padding: 0.6rem 0.85rem; border-radius: 0.5rem; font-size: 0.88rem; }
+.jlc-banner-warn  { background: #fef9c3; color: #854d0e; }
+.jlc-banner-error { background: #fee2e2; color: #991b1b; }
+.jlc-banner-info  { background: #e0f2fe; color: #075985; }
+.jlc-empty { color: var(--jlc-muted); padding: 1.5rem 0; text-align: center; }
+
 /* 인쇄 스타일 — 토글·필터·메모 숨김 */
 @media print {
   #profile-panel,

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self';">
+        content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>Japan Life Checklist</title>
   <link rel="stylesheet" href="./css/custom.css">
@@ -18,17 +18,17 @@
 
   <main class="max-w-5xl mx-auto px-4 pb-12">
     <section id="profile-panel" aria-label="내 상황 (My Profile)">
-      <h2 class="text-lg font-semibold mb-2">📋 내 상황 (My Profile)</h2>
-      <div id="profile-flags" class="grid grid-cols-1 md:grid-cols-2 gap-2">
-        <p class="text-slate-500">profile flags will render here</p>
-      </div>
+      <h2 class="text-lg font-semibold mb-1">📋 내 상황 (My Profile)</h2>
+      <p class="text-sm text-slate-500 mb-3">해당하는 항목을 켜면, 그에 맞는 체크리스트만 아래에 표시됩니다.</p>
+      <div id="profile-flags" class="jlc-flags"></div>
     </section>
 
     <section id="checklist" aria-label="체크리스트" class="mt-8">
-      <h2 class="text-lg font-semibold mb-2">체크리스트</h2>
-      <div id="categories-root">
-        <p class="text-slate-500">categories will render here</p>
+      <div class="flex items-baseline justify-between mb-3">
+        <h2 class="text-lg font-semibold">체크리스트</h2>
+        <span id="progress-display" class="text-sm text-slate-500" aria-live="polite"></span>
       </div>
+      <div id="categories-root"></div>
     </section>
 
     <div id="banner-region" aria-live="polite" class="mt-4"></div>
