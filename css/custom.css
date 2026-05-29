@@ -138,10 +138,64 @@ a { color: var(--jlc-accent); }
 .jlc-banner-info  { background: #e0f2fe; color: #075985; }
 .jlc-empty { color: var(--jlc-muted); padding: 1.5rem 0; text-align: center; }
 
-/* 인쇄 스타일 — 토글·필터·메모 숨김 */
+/* ── 헤더 액션 / 버튼 ───────────────────────────────── */
+.jlc-header-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.jlc-btn {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  min-height: 36px; padding: 0.35rem 0.7rem;
+  border: 1px solid var(--jlc-border); border-radius: 0.5rem;
+  background: transparent; color: var(--jlc-fg); font: inherit; font-size: 0.85rem;
+  cursor: pointer;
+}
+.jlc-btn:hover { border-color: var(--jlc-accent); }
+.jlc-btn-sm { min-height: 30px; padding: 0.2rem 0.55rem; font-size: 0.78rem; }
+.jlc-btn-danger { color: #b91c1c; border-color: #fca5a5; }
+@media (prefers-color-scheme: dark) { .jlc-btn-danger { color: #fca5a5; border-color: #7f1d1d; } }
+
+/* ── 툴바 ───────────────────────────────────────────── */
+.jlc-toolbar {
+  margin-top: 1.25rem; padding: 0.75rem; border: 1px solid var(--jlc-border);
+  border-radius: 0.6rem; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.jlc-toolbar-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.jlc-toolbar-label { font-size: 0.82rem; font-weight: 600; color: var(--jlc-muted); }
+.jlc-seg {
+  min-height: 36px; padding: 0.35rem 0.8rem; border: 1px solid var(--jlc-border);
+  border-radius: 0.5rem; background: transparent; color: var(--jlc-fg); font: inherit;
+  font-size: 0.85rem; cursor: pointer;
+}
+.jlc-seg-on { border-color: var(--jlc-accent); background: color-mix(in srgb, var(--jlc-accent) 14%, transparent); font-weight: 600; }
+.jlc-select, .jlc-search {
+  min-height: 36px; padding: 0.3rem 0.55rem; border: 1px solid var(--jlc-border);
+  border-radius: 0.5rem; background: var(--jlc-bg); color: var(--jlc-fg); font: inherit; font-size: 0.85rem;
+}
+.jlc-search { flex: 1 1 220px; min-width: 0; }
+
+/* ── 타임라인 뷰 ───────────────────────────────────── */
+.jlc-tl-bucket { margin-top: 1.25rem; }
+.jlc-tl-head {
+  font-size: 0.95rem; font-weight: 700; color: var(--jlc-accent);
+  padding-bottom: 0.3rem; border-bottom: 2px dashed var(--jlc-border);
+}
+.jlc-chip-domain { background: color-mix(in srgb, var(--jlc-accent) 12%, transparent); color: var(--jlc-accent); border-color: transparent; }
+
+/* ── 메모 ──────────────────────────────────────────── */
+.jlc-card-notes { margin: 0.5rem 0 0; padding-left: 1.85rem; }
+.jlc-notes-summary { font-size: 0.8rem; color: var(--jlc-muted); cursor: pointer; }
+.jlc-note-input {
+  width: 100%; margin-top: 0.35rem; padding: 0.4rem 0.5rem;
+  border: 1px solid var(--jlc-border); border-radius: 0.4rem;
+  background: var(--jlc-bg); color: var(--jlc-fg); font: inherit; font-size: 0.85rem; resize: vertical;
+}
+.jlc-src-age { color: var(--jlc-muted); font-size: 0.78rem; }
+
+/* 인쇄 스타일 — 토글·필터·메모·헤더액션 숨김 (메모는 사생활) */
 @media print {
   #profile-panel,
+  #toolbar,
   #banner-region,
+  #result-count,
+  .jlc-card-notes,
   .no-print {
     display: none !important;
   }
