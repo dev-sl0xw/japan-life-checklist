@@ -7,6 +7,7 @@ export const DEFAULT_LANG = 'ko';
 // data-i18n 키 → {ko, ja}
 export const STR = {
   ko: {
+    'app.guide': '❓ 사용법',
     'app.export': '⬇ 내보내기',
     'app.import': '⬆ 가져오기',
     'app.reset': '↺ 초기화',
@@ -59,6 +60,7 @@ export const STR = {
     'lang.toggle': '日本語',
   },
   ja: {
+    'app.guide': '❓ 使い方',
     'app.export': '⬇ エクスポート',
     'app.import': '⬆ インポート',
     'app.reset': '↺ リセット',

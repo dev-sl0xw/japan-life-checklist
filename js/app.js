@@ -7,13 +7,13 @@ import {
   getChecked, setChecked, getNotes, setNote, getView, setView,
   getAnchors, setAnchor, getRegion, setRegion, getLang, setLang,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30e';
-import { validateRuntime } from './validate.js?v=2026-05-30e';
+} from './store.js?v=2026-05-30f';
+import { validateRuntime } from './validate.js?v=2026-05-30f';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30e';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30e';
-import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30e';
+} from './filter.js?v=2026-05-30f';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30f';
+import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30f';
 
 const APP_SCHEMA_VERSION = 1;
 
