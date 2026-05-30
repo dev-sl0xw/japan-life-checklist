@@ -7,13 +7,13 @@ import {
   getChecked, setChecked, getNotes, setNote, getView, setView,
   getAnchors, setAnchor, getRegion, setRegion, getLang, setLang,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30f';
-import { validateRuntime } from './validate.js?v=2026-05-30f';
+} from './store.js?v=2026-05-30g';
+import { validateRuntime } from './validate.js?v=2026-05-30g';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30f';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30f';
-import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30f';
+} from './filter.js?v=2026-05-30g';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30g';
+import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30g';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -61,15 +61,45 @@ function isRealDate(s) {
   return dt.getUTCFullYear() === y && dt.getUTCMonth() === m - 1 && dt.getUTCDate() === d;
 }
 
-// 기준일 입력 핸들러: 빈 값→해제, 유효한 YYYY-MM-DD→설정, 그 외(입력 중)→무시
-function onAnchorInput(type, raw) {
-  let v;
-  if (raw === '') v = null;
-  else if (isRealDate(raw)) v = raw;
-  else { $(`anchor-${type}`).setCustomValidity(state.lang === 'ja' ? 'YYYY-MM-DD形式で入力' : 'YYYY-MM-DD 형식으로 입력'); return; }
-  $(`anchor-${type}`).setCustomValidity('');
-  state.anchors[type] = v;
-  setAnchor(type, v || '');
+// 유연한 날짜 파싱: "2026-07-31" · "2026-7-31" · "2026/7/31" · "20260731" · "2026731" 등 → "YYYY-MM-DD"
+// 빈 문자열 → ''(해제), 파싱 실패 또는 비실재 날짜(2026-02-31 등) → null
+function parseFlexibleDate(raw) {
+  const s = (raw || '').trim();
+  if (s === '') return '';
+  let y, m, d;
+  if (/[-/.]/.test(s)) {                       // 구분자(- / .)가 있으면 3토막으로 분해
+    const parts = s.split(/[-/.]/);
+    if (parts.length !== 3) return null;
+    [y, m, d] = parts;
+    if (!/^\d{4}$/.test(y) || !/^\d{1,2}$/.test(m) || !/^\d{1,2}$/.test(d)) return null;
+  } else if (/^\d+$/.test(s)) {                 // 숫자만 → 자릿수로 해석
+    if (s.length === 8)      { y = s.slice(0, 4); m = s.slice(4, 6); d = s.slice(6, 8); }  // YYYYMMDD
+    else if (s.length === 7) { y = s.slice(0, 4); m = s.slice(4, 5); d = s.slice(5, 7); }  // YYYY M DD
+    else if (s.length === 6) { y = s.slice(0, 4); m = s.slice(4, 5); d = s.slice(5, 6); }  // YYYY M D
+    else return null;
+  } else return null;
+  const iso = `${y}-${String(Number(m)).padStart(2, '0')}-${String(Number(d)).padStart(2, '0')}`;
+  return isRealDate(iso) ? iso : null;
+}
+
+// 「적용」 버튼: 두 기준일 입력칸을 파싱해 한 번에 반영. 둘 다 유효할 때만 적용(부분 적용 방지).
+function applyAnchors() {
+  const msg = state.lang === 'ja'
+    ? '日付の形式が正しくありません（例: 2026-07-31）'
+    : '날짜 형식이 올바르지 않습니다 (예: 2026-07-31)';
+  const parsed = {};
+  for (const type of ['move', 'job']) {
+    const inp = $(`anchor-${type}`);
+    const v = parseFlexibleDate(inp.value);
+    if (v === null) { inp.setCustomValidity(msg); inp.reportValidity(); return; }  // 하나라도 실패 시 전체 보류
+    inp.setCustomValidity('');
+    parsed[type] = v || null;          // '' → null(해제)
+  }
+  for (const type of ['move', 'job']) {
+    $(`anchor-${type}`).value = parsed[type] || '';   // 정규화 표시(또는 비움)
+    state.anchors[type] = parsed[type];
+    setAnchor(type, parsed[type] || '');
+  }
   rerenderList();
 }
 
@@ -278,8 +308,11 @@ function wireControls() {
   $('import-file').addEventListener('change', (e) => { if (e.target.files[0]) doImport(e.target.files[0]); e.target.value = ''; });
   $('btn-reset').addEventListener('click', doReset);
   // 기준일 (YYYY-MM-DD 텍스트 입력) — blur(change) 시 형식·실재 날짜 검증
-  $('anchor-move').addEventListener('change', (e) => onAnchorInput('move', e.target.value.trim()));
-  $('anchor-job').addEventListener('change', (e) => onAnchorInput('job', e.target.value.trim()));
+  $('anchor-apply').addEventListener('click', applyAnchors);
+  for (const id of ['anchor-move', 'anchor-job']) {
+    $(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applyAnchors(); } });
+    $(id).addEventListener('input', () => $(id).setCustomValidity(''));   // 입력 시작하면 이전 에러 해제
+  }
   // 지역 (도도부현 + 구/시)
   $('region-select').addEventListener('change', (e) => {
     state.region = { pref: e.target.value, city: null };

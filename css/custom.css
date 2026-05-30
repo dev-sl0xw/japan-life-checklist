@@ -39,6 +39,9 @@ body {
 
 a { color: var(--jlc-accent); }
 
+/* hidden 속성이 display:flex/inline-flex 지정을 덮어쓰도록 보장 (버튼 토글 버그 방지) */
+[hidden] { display: none !important; }
+
 /* 접근성: 포커스 표시 항상 보임 */
 :focus-visible {
   outline: 2px solid var(--jlc-accent);
