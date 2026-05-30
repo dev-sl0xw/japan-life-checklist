@@ -37,7 +37,8 @@
     {
       "id": "leaving_japan_or_overseas_move",
       "label_ko": "영구 귀국/제3국 이동 가능성",
-      "label_ja": "永久帰国・第三国移動の可能性"
+      "label_ja": "永久帰国・第三国移動の可能性",
+      "coming_soon": true
     },
     {
       "id": "has_drivers_license",
@@ -1485,6 +1486,202 @@
         }
       ],
       "anchor": "job"
+    },
+    {
+      "id": "cat_sidejob",
+      "icon": "💴",
+      "label_ko": "부업·프리랜서 세무",
+      "label_ja": "副業・フリーランス税務",
+      "visible_when": {
+        "any_of": [
+          "has_side_income_or_freelance"
+        ]
+      },
+      "subcategories": [
+        {
+          "id": "cat_sidejob_tax",
+          "label_ko": "신고·세무",
+          "label_ja": "申告・税務",
+          "items": [
+            {
+              "id": "side_kakutei_001",
+              "title_ko": "부업 소득 연 20만 엔 초과 시 확정신고",
+              "title_ja": "副業所得が年20万円超なら確定申告",
+              "description_ko": "회사 급여를 받으면서 부업·프리랜서 소득(수입 − 필요경비)이 연 20만 엔을 초과하면 확정신고(確定申告)가 필요합니다. 신고 기간은 통상 다음 해 2/16〜3/15입니다. '20만 엔'은 수입이 아니라 경비를 뺀 '소득' 기준입니다.",
+              "description_ja": "給与所得者で、給与・退職所得以外の所得（収入−必要経費）の合計が年20万円を超える場合は確定申告が必要です。申告期間は原則として翌年2月16日〜3月15日です。「20万円」は収入ではなく経費を引いた「所得」が基準です。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "세금",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 No.1900 급여소득자로서 확정신고가 필요한 사람",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                },
+                {
+                  "label_ko": "국세청 신고와 납세 안내",
+                  "url": "https://www.nta.go.jp/publication/pamph/koho/kurashi/html/06_1.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            },
+            {
+              "id": "side_juminzei_001",
+              "title_ko": "주민세는 '스스로 납부'(보통징수) 선택으로 회사 노출 방지",
+              "title_ja": "住民税は「自分で納付」（普通徴収）を選択",
+              "description_ko": "부업 소득이 20만 엔 이하라 확정신고가 불필요해도 주민세 신고(住民税申告)는 별도로 필요할 수 있습니다. 확정신고서 제2표의 '주민세에 관한 사항'에서 급여 외 소득분을 '스스로 납부(自分で納付=보통징수)'로 선택하면, 부업분 주민세가 본업 회사에 통지(특별징수)되지 않습니다.",
+              "description_ja": "副業所得が20万円以下で確定申告が不要な場合でも、住民税の申告が必要なことがあります。確定申告書第二表の「住民税に関する事項」で給与以外の所得分を「自分で納付」（普通徴収）に選ぶと、副業分の住民税が本業の勤務先に通知（特別徴収）されません。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "주민세"
+              ],
+              "risk_level": "money_loss",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 확정신고서 작성코너 — 주민세 징수방법 선택",
+                  "url": "https://www.keisan.nta.go.jp/r6yokuaru/cat1/cat13/cat132/cat1324/cid395.html",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            },
+            {
+              "id": "side_kaigyo_001",
+              "title_ko": "사업 규모면 개업신고서 1개월 내 제출",
+              "title_ja": "事業規模なら開業届を1か月以内に提出",
+              "description_ko": "프리랜서 소득이 사업 수준에 이르면 '개인사업 개업·폐업등 신고서(個人事業の開業・廃業等届出書)'를 사업 개시일로부터 1개월 이내에 관할 세무서에 제출합니다. 잡소득(雑所得)과 사업소득(事業所得)의 구분은 사회통념상 사업으로 볼 수 있는지로 판단됩니다.",
+              "description_ja": "フリーランス収入が事業と認められる規模になったら、「個人事業の開業・廃業等届出書」を事業開始日から1か月以内に納税地の所轄税務署へ提出します。雑所得と事業所得の区分は、社会通念上事業と称せるかで判定されます。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "개업",
+                "기한"
+              ],
+              "risk_level": "legal_deadline",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 A1-5 개인사업 개업·폐업등 신고 절차",
+                  "url": "https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/shinkoku/annai/04.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                },
+                {
+                  "label_ko": "국세청 No.1350 사업소득의 과세 구조",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1350.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            },
+            {
+              "id": "side_aoiro_001",
+              "title_ko": "사업소득이면 청색신고 승인신청서로 절세",
+              "title_ja": "事業所得なら青色申告承認申請で節税",
+              "description_ko": "사업소득이 있으면 '소득세 청색신고 승인신청서(青色申告承認申請書)'를 내면 청색신고 특별공제(전자신고 시 최대 65만 엔) 등 혜택을 받습니다. 기한은 적용받으려는 해의 3/15까지이며, 신규 개업(1/16 이후 개시)은 개업일로부터 2개월 이내입니다.",
+              "description_ja": "事業所得がある場合、「青色申告承認申請書」を提出すると青色申告特別控除（e-Tax等で最高65万円）などの特典が受けられます。提出期限は適用を受けようとする年の3月15日まで、新規開業（1月16日以後開始）の場合は開業日から2か月以内です。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "절세"
+              ],
+              "risk_level": "money_loss",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 No.2070 청색신고제도",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                },
+                {
+                  "label_ko": "국세청 A1-8 소득세 청색신고 승인신청 절차",
+                  "url": "https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/shinkoku/annai/09.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            },
+            {
+              "id": "side_chobo_001",
+              "title_ko": "장부 기장 및 서류 보존 의무",
+              "title_ja": "帳簿の記帳・書類の保存義務",
+              "description_ko": "사업소득·부동산소득은 물론, 업무에 관한 잡소득(業務に係る雑所得)이 있는 사람도 확정신고 의무가 없더라도 장부·서류 보존이 필요합니다. 백색신고 기준 장부·결산 관계 서류는 5년, 청색신고 사업소득자는 원칙 7년 보존입니다.",
+              "description_ja": "事業所得・不動産所得に加え、業務に係る雑所得がある人も、確定申告義務がない場合でも記帳・帳簿書類の保存が必要です。白色申告では帳簿・決算関係書類は5年、青色申告の事業所得者は原則7年保存です。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "장부"
+              ],
+              "risk_level": "legal_deadline",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 기장·장부 보존·청색신고 안내",
+                  "url": "https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_2.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            },
+            {
+              "id": "side_invoice_001",
+              "title_ko": "(해당 시) 인보이스 등록·소비세 과세사업자 여부 확인",
+              "title_ja": "（該当する場合）インボイス登録・消費税の確認",
+              "description_ko": "거래처에 적격청구서(인보이스)를 발행해야 하는 경우, '적격청구서 발행사업자(適格請求書発行事業者)' 등록이 필요하며 등록하면 소비세 과세사업자가 됩니다. 매출 1,000만 엔 이하 면세사업자는 의무가 아니므로 거래처 요구가 있을 때만 검토하세요.",
+              "description_ja": "取引先に適格請求書（インボイス）を発行する必要がある場合、「適格請求書発行事業者」の登録が必要で、登録すると消費税の課税事業者になります。売上1,000万円以下の免税事業者は義務ではないため、取引先の要請がある場合のみ検討します。",
+              "timeline": null,
+              "timeline_offset_days": null,
+              "tags": [
+                "부업",
+                "소비세"
+              ],
+              "risk_level": "convenience",
+              "visible_when": {},
+              "sources": [
+                {
+                  "label_ko": "국세청 인보이스 제도에 관하여",
+                  "url": "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/invoice_about.htm",
+                  "publisher": "国税庁",
+                  "last_verified": "2026-05-30"
+                }
+              ],
+              "last_verified": "2026-05-30",
+              "needs_verification": false,
+              "links": []
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cat_admin",

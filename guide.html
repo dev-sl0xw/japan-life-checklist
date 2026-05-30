@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self';">
+  <title>사용법 · Japan Life Checklist</title>
+  <link rel="stylesheet" href="./css/custom.css?v=2026-05-30g">
+</head>
+<body>
+  <header class="jlc-guide-header">
+    <div class="jlc-guide jlc-guide-headrow">
+      <a href="./index.html" class="jlc-btn" data-lang="ko" hidden>← 체크리스트로</a>
+      <a href="./index.html" class="jlc-btn" data-lang="ja" hidden>← チェックリストへ</a>
+      <button id="btn-lang" type="button" class="jlc-btn jlc-btn-lang">日本語</button>
+    </div>
+  </header>
+
+  <main class="jlc-guide">
+    <!-- ───────────── 한국어 ───────────── -->
+    <div data-lang="ko" hidden>
+      <h1>🗾 사용법 — Japan Life Checklist</h1>
+      <p class="jlc-guide-lead">일본 거주 한국인(외국인)을 위한 <strong>이사 · 이직 · 필수 행정 자가 검토 체크리스트</strong>입니다. 내 상황에 해당하는 항목만 골라 보고, 나만의 날짜로 D-Day를 계산할 수 있습니다.</p>
+
+      <div class="jlc-guide-warn">
+        ⚠️ <strong>데이터는 이 브라우저에만 저장됩니다.</strong> 체크·메모·설정은 서버로 전송되지 않으며, 다른 기기·시크릿 모드·인앱 브라우저(LINE/카카오 등)와는 분리됩니다. 기기를 옮기려면 아래 ⑥의 <strong>내보내기/가져오기</strong>를 사용하세요.
+      </div>
+
+      <h2>3분 안에 시작하기</h2>
+
+      <div class="jlc-guide-step">
+        <h3>① 「내 상황」을 켜기</h3>
+        <p>맨 위 <strong>📋 내 상황(My Profile)</strong>에서 해당하는 항목(이사 중 / 이직 중 / 공백기 / 자동차 보유 / 부업·프리랜서 소득 등)을 켜세요. 켠 상황에 맞는 체크리스트만 아래에 나타납니다. <span class="jlc-guide-lead">「준비중」 배지가 붙은 항목(예: 영구 귀국)은 아직 선택할 수 없습니다.</span></p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>② 이사 예정일 · 퇴직일 입력 → 나만의 D-Day</h3>
+        <p>툴바의 날짜 칸에 날짜를 입력하고 <strong>「적용」</strong> 버튼을 누르면(또는 Enter), 각 항목이 <strong>실제 달력 날짜 + 남은 일수</strong>로 계산됩니다. 입력 형식은 자유롭습니다 — <code>2026-07-31</code>, <code>2026-7-31</code>, <code>20260731</code>, <code>2026731</code> 모두 인식합니다. 임박할수록 색이 강해집니다(D-5 이내 강한 빨강 → 지난 항목은 진한 빨강). 비워 두고 「적용」하면 상대 라벨(D-60 등)로 돌아가, 날짜를 모르는 사람도 그대로 사용할 수 있습니다.</p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>③ 거주 지역 선택</h3>
+        <p>도도부현(47)을 고르면 役所·대형쓰레기 등 지역별 공식 링크가 반영됩니다. <strong>도쿄도</strong>는 23구까지 2단으로 선택하면 각 구의 粗大ごみ 신청 페이지로 바로 연결됩니다.</p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>④ 보기 · 필터 · 검색</h3>
+        <ul>
+          <li><strong>도메인별</strong>(이사·이직·행정) / <strong>타임라인순</strong>(D-60 → D-Day → D+30) 전환</li>
+          <li>상태(미완료/완료) · 위험도로 필터링</li>
+          <li>검색은 <strong>양방향</strong>: 한국어로 검색해도 일본어 원문(<code>任意継続</code> 등)에 매치됩니다</li>
+        </ul>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>⑤ 위험도 색상의 의미</h3>
+        <ul class="jlc-guide-legend">
+          <li>🟥 <strong>법정기한</strong> — 기한 넘기면 법적 불이익(공식 출처·확인일 표기)</li>
+          <li>🟧 <strong>금전손실</strong> — 놓치면 돈이 나가거나 못 받음</li>
+          <li>🟨 <strong>서비스중단</strong> — 통신·은행 등 중단 위험</li>
+          <li>⬜ <strong>편의</strong> — 챙기면 좋은 항목</li>
+        </ul>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>⑥ 메모 · 내보내기 / 가져오기</h3>
+        <p>각 항목에 개인 메모를 남길 수 있습니다(이 브라우저에만 저장). 기기를 바꾸거나 백업하려면 상단 <strong>「⬇ 내보내기」</strong>로 JSON을 저장하고, 새 기기에서 <strong>「⬆ 가져오기」</strong>로 복원하세요.</p>
+      </div>
+
+      <h2>면책</h2>
+      <p class="jlc-guide-lead">참고용 도구입니다. 법정기한·절차는 제도 개정·지자체·개인 상황에 따라 달라질 수 있으니, 각 항목의 <strong>공식 출처와 관할 기관에서 최신 내용을 반드시 확인</strong>하세요. 정보의 정확성·최신성을 보증하지 않습니다.</p>
+
+      <p><a href="./index.html" class="jlc-btn jlc-btn-lang">← 체크리스트 시작하기</a></p>
+    </div>
+
+    <!-- ───────────── 日本語 ───────────── -->
+    <div data-lang="ja" hidden>
+      <h1>🗾 使い方 — Japan Life Checklist</h1>
+      <p class="jlc-guide-lead">日本在住の韓国人（外国人）向けの<strong>引っ越し・転職・必須行政の自己チェックリスト</strong>です。自分の状況に該当する項目だけを表示し、自分の日付でD-Dayを計算できます。</p>
+
+      <div class="jlc-guide-warn">
+        ⚠️ <strong>データはこのブラウザにのみ保存されます。</strong> チェック・メモ・設定はサーバーに送信されず、他の端末・シークレットモード・アプリ内ブラウザ（LINE等）とは分離されます。端末を移す場合は下記⑥の<strong>エクスポート／インポート</strong>をご利用ください。
+      </div>
+
+      <h2>3分で始める</h2>
+
+      <div class="jlc-guide-step">
+        <h3>① 「マイ・プロフィール」をオン</h3>
+        <p>最上部の<strong>📋 マイ・プロフィール</strong>で該当項目（引っ越し中／転職中／空白期間／自動車所持／副業・フリーランス収入など）をオンにします。オンにした状況に合うチェックリストだけが下に表示されます。<span class="jlc-guide-lead">「準備中」バッジの項目（例：永久帰国）はまだ選択できません。</span></p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>② 引っ越し予定日・退職日を入力 → 自分のD-Day</h3>
+        <p>ツールバーの日付欄に日付を入力し<strong>「適用」</strong>ボタンを押す（またはEnter）と、各項目が<strong>実際のカレンダー日付＋残り日数</strong>で計算されます。入力形式は自由です — <code>2026-07-31</code>・<code>2026-7-31</code>・<code>20260731</code>・<code>2026731</code> いずれも認識します。近づくほど色が強くなります（D-5以内で濃い赤、過ぎた項目は暗赤）。空欄で「適用」すると相対ラベル（D-60など）に戻り、日付が未定でもそのまま使えます。</p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>③ お住まいの地域を選択</h3>
+        <p>都道府県（47）を選ぶと、役所・粗大ごみなど地域別の公式リンクが反映されます。<strong>東京都</strong>は23区まで2段階で選ぶと、各区の粗大ごみ申込ページへ直接つながります。</p>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>④ 表示・フィルター・検索</h3>
+        <ul>
+          <li><strong>分野別</strong>（引っ越し・転職・行政）／<strong>タイムライン順</strong>（D-60 → D-Day → D+30）の切替</li>
+          <li>状態（未完了／完了）・重要度でフィルター</li>
+          <li>検索は<strong>双方向</strong>：韓国語で検索しても日本語原文（<code>任意継続</code>など）にヒットします</li>
+        </ul>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>⑤ 重要度の色の意味</h3>
+        <ul class="jlc-guide-legend">
+          <li>🟥 <strong>法定期限</strong> — 期限を過ぎると法的な不利益（公式情報源・確認日を表示）</li>
+          <li>🟧 <strong>金銭損失</strong> — 逃すとお金が出る／受け取れない</li>
+          <li>🟨 <strong>サービス停止</strong> — 通信・銀行などの停止リスク</li>
+          <li>⬜ <strong>利便</strong> — やっておくと良い項目</li>
+        </ul>
+      </div>
+
+      <div class="jlc-guide-step">
+        <h3>⑥ メモ・エクスポート／インポート</h3>
+        <p>各項目に個人メモを残せます（このブラウザにのみ保存）。端末を変える・バックアップする場合は、上部の<strong>「⬇ エクスポート」</strong>でJSONを保存し、新しい端末で<strong>「⬆ インポート」</strong>で復元してください。</p>
+      </div>
+
+      <h2>免責</h2>
+      <p class="jlc-guide-lead">参考用のツールです。法定期限・手続きは制度改正・自治体・個人の状況により変わるため、各項目の<strong>公式情報源と管轄機関で最新の内容を必ずご確認</strong>ください。情報の正確性・最新性は保証しません。</p>
+
+      <p><a href="./index.html" class="jlc-btn jlc-btn-lang">← チェックリストを始める</a></p>
+    </div>
+  </main>
+
+  <script src="./js/guide.js?v=2026-05-30g"></script>
+</body>
+</html>
