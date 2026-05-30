@@ -7,13 +7,13 @@ import {
   getChecked, setChecked, getNotes, setNote, getView, setView,
   getAnchors, setAnchor, getRegion, setRegion, getLang, setLang,
   exportData, importData, clearAll, onCrossTabChange,
-} from './store.js?v=2026-05-30d';
-import { validateRuntime } from './validate.js?v=2026-05-30d';
+} from './store.js?v=2026-05-30e';
+import { validateRuntime } from './validate.js?v=2026-05-30e';
 import {
   flattenVisible, buildSearchIndex, matchesSearch, matchesStatus, matchesRisk,
-} from './filter.js?v=2026-05-30d';
-import { renderProfile, renderChecklist } from './render.js?v=2026-05-30d';
-import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30d';
+} from './filter.js?v=2026-05-30e';
+import { renderProfile, renderChecklist } from './render.js?v=2026-05-30e';
+import { t, fmtProgress, fmtResultCount, fmtDataAsOf } from './strings.js?v=2026-05-30e';
 
 const APP_SCHEMA_VERSION = 1;
 
@@ -51,6 +51,26 @@ function banner(msg, kind = 'info') {
 function debounce(fn, ms) {
   let t;
   return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+
+// YYYY-MM-DD 형식 + 실재하는 달력 날짜인지(예: 2026-02-31 거부)
+function isRealDate(s) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  const [y, m, d] = s.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  return dt.getUTCFullYear() === y && dt.getUTCMonth() === m - 1 && dt.getUTCDate() === d;
+}
+
+// 기준일 입력 핸들러: 빈 값→해제, 유효한 YYYY-MM-DD→설정, 그 외(입력 중)→무시
+function onAnchorInput(type, raw) {
+  let v;
+  if (raw === '') v = null;
+  else if (isRealDate(raw)) v = raw;
+  else { $(`anchor-${type}`).setCustomValidity(state.lang === 'ja' ? 'YYYY-MM-DD形式で入力' : 'YYYY-MM-DD 형식으로 입력'); return; }
+  $(`anchor-${type}`).setCustomValidity('');
+  state.anchors[type] = v;
+  setAnchor(type, v || '');
+  rerenderList();
 }
 
 // profile-visible 항목(필터 무관) — 진행률 기준
@@ -257,9 +277,9 @@ function wireControls() {
   $('btn-export').addEventListener('click', doExport);
   $('import-file').addEventListener('change', (e) => { if (e.target.files[0]) doImport(e.target.files[0]); e.target.value = ''; });
   $('btn-reset').addEventListener('click', doReset);
-  // 기준일
-  $('anchor-move').addEventListener('change', (e) => { state.anchors.move = e.target.value || null; setAnchor('move', e.target.value); rerenderList(); });
-  $('anchor-job').addEventListener('change', (e) => { state.anchors.job = e.target.value || null; setAnchor('job', e.target.value); rerenderList(); });
+  // 기준일 (YYYY-MM-DD 텍스트 입력) — blur(change) 시 형식·실재 날짜 검증
+  $('anchor-move').addEventListener('change', (e) => onAnchorInput('move', e.target.value.trim()));
+  $('anchor-job').addEventListener('change', (e) => onAnchorInput('job', e.target.value.trim()));
   // 지역 (도도부현 + 구/시)
   $('region-select').addEventListener('change', (e) => {
     state.region = { pref: e.target.value, city: null };

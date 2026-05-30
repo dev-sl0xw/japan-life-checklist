@@ -3,7 +3,7 @@
 
 import {
   t, fmtRelative, fmtCountdown, fmtVerifiedAgo, fmtRegionNote,
-} from './strings.js?v=2026-05-30d';
+} from './strings.js?v=2026-05-30e';
 
 const RISK_META = {
   legal_deadline:       { mark: '🟥', cls: 'jlc-risk-legal',       prio: 0 },
@@ -77,6 +77,19 @@ export function renderProfile(panelEl, flags, profile, lang, onToggle) {
   if (!panelEl) return;
   panelEl.textContent = '';
   for (const flag of flags) {
+    // 준비중(coming_soon) 플래그 — 선택 불가, "준비중" 배지로 안내(v1.5 예정)
+    if (flag.coming_soon === true) {
+      const btn = el('button', {
+        class: 'jlc-flag jlc-flag-soon',
+        attrs: { type: 'button', disabled: 'disabled', 'aria-disabled': 'true', 'data-flag': flag.id },
+      });
+      const titles = el('span', { class: 'jlc-flag-titles' });
+      bilingualInto(titles, flag, 'label', lang, 'jlc-flag-ko', 'jlc-flag-ja');
+      btn.appendChild(titles);
+      btn.appendChild(el('span', { class: 'jlc-flag-badge', text: t(lang, 'profile.comingSoon') }));
+      panelEl.appendChild(btn);
+      continue;
+    }
     const on = profile?.[flag.id] === true;
     const btn = el('button', {
       class: 'jlc-flag' + (on ? ' jlc-flag-on' : ''),

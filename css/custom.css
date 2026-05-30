@@ -76,6 +76,19 @@ a { color: var(--jlc-accent); }
 .jlc-flag-ko { font-weight: 600; }
 .jlc-flag-ja { font-size: 0.78rem; color: var(--jlc-muted); }
 
+/* 준비중(coming_soon) 플래그 — 선택 불가 */
+.jlc-flag-soon {
+  flex-direction: row; align-items: center; justify-content: space-between; gap: 0.5rem;
+  cursor: not-allowed; opacity: 0.6;
+}
+.jlc-flag-soon:hover { border-color: var(--jlc-border); }
+.jlc-flag-titles { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; }
+.jlc-flag-badge {
+  flex-shrink: 0; font-size: 0.7rem; font-weight: 700;
+  padding: 0.1rem 0.45rem; border-radius: 999px;
+  background: var(--jlc-border); color: var(--jlc-muted);
+}
+
 /* ── 카테고리 / 소분류 ──────────────────────────────── */
 .jlc-cat { margin-top: 1.5rem; }
 .jlc-cat-head {
@@ -221,11 +234,11 @@ a { color: var(--jlc-accent); }
 }
 .jlc-toolbar-hint { font-size: 0.74rem; color: var(--jlc-muted); }
 
-/* ── D-Day 근접 강조 (기준일 입력 시) ──────────────── */
-.jlc-chip-timeline.jlc-u-overdue { background: #7f1d1d; color: #fff; border-color: #7f1d1d; }
-.jlc-chip-timeline.jlc-u-now     { background: #dc2626; color: #fff; border-color: #dc2626; font-weight: 700; }
-.jlc-chip-timeline.jlc-u-soon    { background: #f97316; color: #fff; border-color: #f97316; }
-.jlc-chip-timeline.jlc-u-near    { background: #fde047; color: #713f12; border-color: #facc15; }
+/* ── D-Day 근접 강조 (기준일 입력 시) — 가까울수록 강한 빨강 ── */
+.jlc-chip-timeline.jlc-u-overdue { background: #7f1d1d; color: #fff; border-color: #7f1d1d; font-weight: 700; }
+.jlc-chip-timeline.jlc-u-now     { background: #dc2626; color: #fff; border-color: #b91c1c; font-weight: 700; box-shadow: 0 0 0 2px color-mix(in srgb, #dc2626 35%, transparent); }
+.jlc-chip-timeline.jlc-u-soon    { background: #ef4444; color: #fff; border-color: #ef4444; font-weight: 600; }
+.jlc-chip-timeline.jlc-u-near    { background: #f59e0b; color: #fff; border-color: #f59e0b; }
 .jlc-chip-timeline.jlc-u-far     { background: transparent; color: var(--jlc-muted); border-color: var(--jlc-border); }
 
 /* ── 바로가기 / 지역 안내 ──────────────────────────── */
